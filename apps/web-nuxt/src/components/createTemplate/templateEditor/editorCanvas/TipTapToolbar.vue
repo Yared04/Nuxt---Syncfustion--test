@@ -347,11 +347,16 @@
       >
         <font-awesome-icon icon="fa-solid fa-file-lines" size="lg" />
       </Button>
-      <input
+      <!-- <input
         type="color"
         :value="editor.getAttributes('textStyle').color"
         @input="editor.chain().focus().setColor($event.target.value).run()"
-      />
+      /> -->
+      <!-- :value="editor.getAttributes('textStyle').color" -->
+      <!-- <p> {{ editor.getAttributes('textStyle').color }}</p>
+      value="#ffffff"
+      @input="editor.chain().focus().setColor($event.target.value).run()" -->
+      <SyncFusionColorPicker @set-color="(val) => editor.chain().focus().setColor(val).run() " />
 
       <!-- <Button v-if="templateGeneralInformation?.useCase === 'Form to doc'" :label="$t('Cp_templateEditor_tiptap_topbar.add_form_field')" @click="showAddFormFieldsForm = true" /> -->
 
@@ -452,6 +457,8 @@
 import { v4 as uuidv4 } from 'uuid'
 import { FilterMatchMode, FilterOperator } from 'primevue/api'
 import { ImageLibraryModal } from '@docspawn/image-library-modal'
+
+import SyncFusionColorPicker from './ToolbarComponent/SyncFusionColorPicker'
 import { useTimestampFormats } from '@/composables/useTimestampFormats'
 import { templateEditorStore } from '@/composables/useTemplateEditorData'
 import { templateGeneralInformation } from '@/composables/useTemplateCreationData.js'
