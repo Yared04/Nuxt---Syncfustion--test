@@ -1,7 +1,10 @@
 <template>
-  <EjsColorpicker
-    v-model="color"
-  />
+  <div class="border border-primary-500 rounded-lg flex items-center">
+    <EjsColorpicker
+      v-model="color"
+      :show-recent-colors="true"
+    />
+  </div>
   <!-- :preset-colors="customColors" -->
 </template>
 
