@@ -122,7 +122,7 @@
         option-label="label"
         option-value="value"
         placeholder="Select font"
-        class="w-12 md:w-44 mt-0 h-[26px] p-0 text-xs pb-2"
+        class="w-12 md:w-44 mt-0 h-[26px] text-xs custom-dropdown"
         @change="changeFont"
       />
       <Dropdown
@@ -132,7 +132,7 @@
         option-label="label"
         option-value="value"
         placeholder="Select font size"
-        class="w-12 md:w-32 mt-0  h-[26px] p-0 text-xs pb-2"
+        class="w-12 md:w-32 mt-0  h-[26px] text-xs custom-dropdown"
         @change="changeSize"
       />
 
@@ -247,5 +247,24 @@ onMounted(() => {
 .is-active:hover {
   background-color: var(--purple-contrast);
   color: #000;
+}
+.custom-dropdown .p-dropdown-label {
+  padding-top: 0rem; /* Adjusts the vertical padding */
+  padding-bottom: 0.25rem;
+  line-height: 1.2; /* Adjusts how the text fits inside */
+  height: 100%;
+  display: flex;
+  align-items: center; /* Ensures text and cursor are centered */
+  font-size: 0.75rem; /* Adjust font size to match your `text-xs` class */
+}
+
+.custom-dropdown .p-dropdown-panel {
+  padding: 0; /* Optional: To remove any extra padding in the dropdown */
+}
+
+.custom-dropdown .p-dropdown-trigger {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 </style>
