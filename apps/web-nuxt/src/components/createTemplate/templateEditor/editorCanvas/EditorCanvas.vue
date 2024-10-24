@@ -1,67 +1,71 @@
 <template>
-  <div ref="parentContainer" class="h-full  w-[920px] overflow-auto  " :style="{ width: `${computedCanvasWidth + 20}px` }">
+  <div ref="parentContainer" class="h-full  w-[920px] overflow-auto flex flex-col  " :style="{ width: `${computedCanvasWidth + 20}px` }">
     <CanvasOptionsTopBar
       :show-expert-editor="templateEditorStore.showExpertEditor" @update-scale="updateScale" @toggle-expert-editor="() => {
         templateEditorStore.showExpertEditor = !templateEditorStore.showExpertEditor;
       }"
     />
 
-    <div class="">
+    <div class="h-[62px] rounded mb-3 sticky top-0 left-0">
       <div v-show="templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box'">
         <TipTapToolbar />
       </div>
       <div v-if=" templateEditorStore?.selectedAddedField?.fieldType !== 'Form checkbox group' && templateEditorStore?.selectedAddedField?.fieldType !== 'Text box' && templateEditorStore?.showOptionsBar" class="mb-6">
         <TextFormatting />
       </div>
+      <p v-else-if="!(templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box')">
+        Formatiing options: no field selected
+      </p>
     </div>
-
-    <div v-if="!isCanvasLoaded " class="w-full h-full ">
-      <div class="rounded-lg border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-800 h-full shadow-lg mb-4 p-8">
-        <div class="flex mb-4">
-          <div>
-            <Skeleton width="10rem" class="mb-2" />
-            <Skeleton width="5rem" class="mb-2" />
-            <Skeleton height=".5rem" />
+    <div class="flex-1 overflow-y-auto">
+      <div v-if="!isCanvasLoaded " class="w-full h-full ">
+        <div class="rounded-lg border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-800 h-full shadow-lg mb-4 p-8">
+          <div class="flex mb-4">
+            <div>
+              <Skeleton width="10rem" class="mb-2" />
+              <Skeleton width="5rem" class="mb-2" />
+              <Skeleton height=".5rem" />
+            </div>
+          </div>
+          <Skeleton width="100%" height="60%" />
+          <div class="flex justify-between mt-4">
+            <Skeleton width="4rem" height="2rem" />
+            <Skeleton width="4rem" height="2rem" />
           </div>
         </div>
-        <Skeleton width="100%" height="60%" />
-        <div class="flex justify-between mt-4">
-          <Skeleton width="4rem" height="2rem" />
-          <Skeleton width="4rem" height="2rem" />
-        </div>
       </div>
-    </div>
-    <!-- <Button @click="addHtmlContainer">
+      <!-- <Button @click="addHtmlContainer">
       Add Text box
     </Button> -->
-    <div id="canvas-wrapper" ref="canvasWrapper" :style="canvasWrapperStyle" class="rounded-md min-h-full flex  flex-col   relative   ">
-      <!-- <div v-show="showExpertEditor" ref="editorContainer" class="w-max h-max">
+      <div id="canvas-wrapper" ref="canvasWrapper" :style="canvasWrapperStyle" class="rounded-md min-h-full flex  flex-col   relative   ">
+        <!-- <div v-show="showExpertEditor" ref="editorContainer" class="w-max h-max">
         <RichTextEditor
           v-if="canvasWrapperHeight > 100"
           :editor-height="canvasWrapperHeight" :editor-width="computedCanvasWidth"
         />
       </div> -->
 
-      <!-- Loop through all editor instances and display them -->
-      <div
-        v-for="(editorContainer) in templateEditorStore.editorContainers"
-        :key="editorContainer.id"
-        :ref="setEditorContainerRef(editorContainer.id)"
-        :style="{ ...editorContainer.style,
-                  zIndex: editorContainer?.pageNo === templateEditorStore?.activePageForCanvas ? (editorContainer.style?.zIndex && editorContainer.style?.zIndex) : '-1',
-                  pointerEvents: (editorContainer?.behaviourMode === 'drag' || editorContainer.id !== templateEditorStore.selectedAddedField?.id) ? 'none' : 'auto',
-        }"
-        class="editor-container"
-      >
-        <!-- {{ editorContainer?.pageNo === templateEditorStore?.activePageForCanvas ? (editorContainer.style?.zIndex && editorContainer.style?.zIndex) : '-1' }} -->
-        <HtmlContainer :editor-id="editorContainer.id" />
+        <!-- Loop through all editor instances and display them -->
+        <div
+          v-for="(editorContainer) in templateEditorStore.editorContainers"
+          :key="editorContainer.id"
+          :ref="setEditorContainerRef(editorContainer.id)"
+          :style="{ ...editorContainer.style,
+                    zIndex: editorContainer?.pageNo === templateEditorStore?.activePageForCanvas ? (editorContainer.style?.zIndex && editorContainer.style?.zIndex) : '-1',
+                    pointerEvents: (editorContainer?.behaviourMode === 'drag' || editorContainer.id !== templateEditorStore.selectedAddedField?.id) ? 'none' : 'auto',
+          }"
+          class="editor-container"
+        >
+          <!-- {{ editorContainer?.pageNo === templateEditorStore?.activePageForCanvas ? (editorContainer.style?.zIndex && editorContainer.style?.zIndex) : '-1' }} -->
+          <HtmlContainer :editor-id="editorContainer.id" />
+        </div>
+
+        <canvas id="template-canvas" ref="templateCanvas" class=" flex-1 w-full min-h-full h-full  rounded-md  my-0 shadow border ">
+        </canvas>
       </div>
 
-      <canvas id="template-canvas" ref="templateCanvas" class=" flex-1 w-full min-h-full h-full  rounded-md  my-0 shadow border ">
-      </canvas>
+      <ThumbnailBar :style="thumbnailCoverStyle" />
     </div>
-
-    <ThumbnailBar :style="thumbnailCoverStyle" />
   </div>
 </template>
 

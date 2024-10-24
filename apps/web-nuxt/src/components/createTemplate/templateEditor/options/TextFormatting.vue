@@ -1,15 +1,15 @@
 <template>
-  <div class="mt-2 bg-white p-2">
-    <div class="flex flex-wrap items-center gap-3">
+  <div class="mt-0 bg-white p-0 ">
+    <div class="flex flex-wrap  gap-2">
       <!-- Select Font Button -->
       <Button
         v-if="isEditableFieldType"
         v-tooltip="'Select Font'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         @click="toggleFontOptions"
       >
-        <font-awesome-icon icon="fa-solid fa-font" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-font" size="sm" />
       </Button>
 
       <!-- Font Size Button -->
@@ -17,10 +17,10 @@
         v-if="isEditableFieldType"
         v-tooltip="'Font Size'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         @click="toggleFontSizeOptions"
       >
-        <font-awesome-icon icon="fa-light fa-text-size" size="lg" />
+        <font-awesome-icon icon="fa-light fa-text-size" size="sm" />
       </Button>
 
       <!-- Underline Button -->
@@ -28,11 +28,11 @@
         v-if="isEditableFieldType"
         v-tooltip="'Underline'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         :class="{ 'is-active': activeTextStyles.underline }"
         @click="toggleUnderline"
       >
-        <font-awesome-icon icon="fa-solid fa-underline" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-underline" size="sm" />
       </Button>
 
       <!-- Bold Button -->
@@ -40,11 +40,11 @@
         v-if="isEditableFieldType"
         v-tooltip="'Bold'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         :class="{ 'is-active': activeTextStyles.fontWeight === 700 }"
         @click="toggleBold"
       >
-        <font-awesome-icon icon="fa-solid fa-bold" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-bold" size="sm" />
       </Button>
 
       <!-- Italic Button -->
@@ -52,11 +52,11 @@
         v-if="isEditableFieldType"
         v-tooltip="'Italic'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         :class="{ 'is-active': activeTextStyles.fontStyle === 'italic' }"
         @click="toggleItalic"
       >
-        <font-awesome-icon icon="fa-solid fa-italic" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-italic" size="sm" />
       </Button>
 
       <!-- Text Align Buttons -->
@@ -64,31 +64,31 @@
         v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'"
         v-tooltip="'Align Left'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         :class="{ 'is-active': activeTextStyles.textAlign === 'left' }"
         @click="setTextAlign('left')"
       >
-        <font-awesome-icon icon="fa-solid fa-align-left" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-align-left" size="sm" />
       </Button>
       <Button
         v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'"
         v-tooltip="'Align Center'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         :class="{ 'is-active': activeTextStyles.textAlign === 'center' }"
         @click="setTextAlign('center')"
       >
-        <font-awesome-icon icon="fa-solid fa-align-center" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-align-center" size="sm" />
       </Button>
       <Button
         v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'"
         v-tooltip="'Align Right'"
         outlined
-        class="w-max px-2"
+        class="w-[26px] px-0 h-[26px]"
         :class="{ 'is-active': activeTextStyles.textAlign === 'right' }"
         @click="setTextAlign('right')"
       >
-        <font-awesome-icon icon="fa-solid fa-align-right" size="lg" />
+        <font-awesome-icon icon="fa-solid fa-align-right" size="sm" />
       </Button>
 
       <!-- Character Spacing Buttons -->
@@ -96,19 +96,19 @@
         v-if="isEditableFieldType"
         v-tooltip="'Reduce Character Spacing'"
         outlined
-        class="w-max px-2 "
+        class="w-[26px] px-0 h-[26px]"
         @click="reduceCharacterSpacing"
       >
-        <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-to-line" size="lg" />
+        <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-to-line" size="sm" />
       </Button>
       <Button
         v-if="isEditableFieldType"
         v-tooltip="'Increase Character Spacing'"
         outlined
-        class="w-max px-2 "
+        class="w-[26px] px-0 h-[26px]"
         @click="increaseCharacterSpacing"
       >
-        <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-from-line" size="lg" />
+        <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-from-line" size="sm" />
       </Button>
 
       <!-- Additional Elements -->
@@ -122,7 +122,7 @@
         option-label="label"
         option-value="value"
         placeholder="Select font"
-        class="w-12 md:w-44 mt-3"
+        class="w-12 md:w-44 mt-0 h-[26px] p-0 text-xs pb-2"
         @change="changeFont"
       />
       <Dropdown
@@ -132,7 +132,7 @@
         option-label="label"
         option-value="value"
         placeholder="Select font size"
-        class="w-12 md:w-32 mt-3"
+        class="w-12 md:w-32 mt-0  h-[26px] p-0 text-xs pb-2"
         @change="changeSize"
       />
 

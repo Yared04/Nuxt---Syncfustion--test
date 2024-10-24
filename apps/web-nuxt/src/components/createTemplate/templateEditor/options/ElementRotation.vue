@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <div class="h-12 w-full flex items-center justify-between">
+    <div class="h-12 w-full flex  justify-between">
       <div class="flex gap-2">
         <!-- <div v-tooltip.top="$t('Cp_templateEditor_elementRotation.rotate_clockwise')" class="h-8 w-8 text-2xl text-black flex items-center justify-center rounded-md cursor-pointer p-2" @click="rotateClockwise">
           <font-awesome-icon icon="fa-light fa-arrow-rotate-right" size="xs" />
@@ -12,20 +12,20 @@
         <Button
           v-tooltip="$t('Cp_templateEditor_elementRotation.rotate_clockwise')"
           outlined
-          class="w-max px-2"
+          class="w-[26px] px-0 h-[26px]"
           @click="rotateClockwise"
         >
-          <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" size="lg" />
+          <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" size="sm" />
         </Button>
 
         <!-- Rotate Anticlockwise Button -->
         <Button
           v-tooltip="$t('Cp_templateEditor_elementRotation.rotate_anticlockwise')"
           outlined
-          class="w-max px-2"
+          class="w-[26px] px-0 h-[26px]"
           @click="rotateAntiClockwise"
         >
-          <font-awesome-icon icon="fa-solid fa-arrow-rotate-left" size="lg" />
+          <font-awesome-icon icon="fa-solid fa-arrow-rotate-left" size="sm" />
         </Button>
       </div>
     </div>

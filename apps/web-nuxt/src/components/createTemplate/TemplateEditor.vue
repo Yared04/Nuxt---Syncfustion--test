@@ -10,7 +10,7 @@
     </div>
     <Options :is-expert-editor="true" @save-template="emit('saveTemplate')" />
   </div>
-  <div v-else class="flex w-full space-x-3 relative mb-12 h-[90vh] overflow-hidden ">
+  <div v-else class="flex w-full space-x-6 relative mb-12 h-[90vh] overflow-hidden ">
     <TemplateFields />
     <EditorCanvas />
     <Options @save-template="emit('saveTemplate')" />

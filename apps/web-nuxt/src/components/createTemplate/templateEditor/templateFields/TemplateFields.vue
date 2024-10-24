@@ -1,11 +1,11 @@
 <template>
   <ConfirmPopup group="confirmFieldDeletion" />
-  <div class="flex-1 h-full overflow-auto pr-1" :style="{ minWidth: '200px' }">
+  <div class="flex-1 h-full overflow-auto pr-0" :style="{ minWidth: '200px' }">
     <div class="w-full">
       <div
         v-if="templateEditorStore.ShowAddedFieldsinTemplateFields === true"
         icon="pi pi-angle-left"
-        class="w-full mb-6 justify-left gap-2 h-[62px] text-lg rounded-md text-primary-500 cursor-pointer bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75 hover:border hover:border-primaryBlue"
+        class="w-full mb-[1.5rem] justify-left gap-2 h-[62px] text-lg rounded-md text-primary-500 cursor-pointer bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75 hover:border hover:border-primaryBlue"
         @click="templateEditorStore.ShowAddedFieldsinTemplateFields = false"
       >
         <i class="pi pi-plus"></i>
