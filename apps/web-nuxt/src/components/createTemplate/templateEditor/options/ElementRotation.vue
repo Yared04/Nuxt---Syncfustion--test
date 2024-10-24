@@ -11,21 +11,23 @@
         <!-- Rotate Clockwise Button -->
         <Button
           v-tooltip="$t('Cp_templateEditor_elementRotation.rotate_clockwise')"
+          :disabled="!isRotatable"
           outlined
-          class="w-[26px] px-0 h-[26px]"
+          class="w-[40px] px-0 h-[40px]"
           @click="rotateClockwise"
         >
-          <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" size="sm" />
+          <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" size="lg" />
         </Button>
 
         <!-- Rotate Anticlockwise Button -->
         <Button
           v-tooltip="$t('Cp_templateEditor_elementRotation.rotate_anticlockwise')"
+          :disabled="!isRotatable"
           outlined
-          class="w-[26px] px-0 h-[26px]"
+          class="w-[40px] px-0 h-[40px]"
           @click="rotateAntiClockwise"
         >
-          <font-awesome-icon icon="fa-solid fa-arrow-rotate-left" size="sm" />
+          <font-awesome-icon icon="fa-solid fa-arrow-rotate-left" size="lg" />
         </Button>
       </div>
     </div>
@@ -39,8 +41,8 @@
 import canvasService from '@/composables/useTemplateCanvas'
 import { templateEditorStore } from '@/composables/useTemplateEditorData'
 
+const props = defineProps(['isRotatable'])
 const rotationVal = ref(0)
-
 function initiateRotation() {
   const canvas = canvasService.getCanvas()
   if (canvas) {

@@ -10,12 +10,15 @@
       <div v-show="templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box'">
         <TipTapToolbar />
       </div>
-      <div v-if=" templateEditorStore?.selectedAddedField?.fieldType !== 'Form checkbox group' && templateEditorStore?.selectedAddedField?.fieldType !== 'Text box' && templateEditorStore?.showOptionsBar" class="mb-6">
+      <div v-if="!(templateEditorStore?.selectedAddedField?.fieldType === 'Text box')">
+        <TextFormatting />
+      </div>
+      <!-- <div v-if=" templateEditorStore?.selectedAddedField?.fieldType !== 'Form checkbox group' && templateEditorStore?.selectedAddedField?.fieldType !== 'Text box' && templateEditorStore?.showOptionsBar" class="mb-6">
         <TextFormatting />
       </div>
       <p v-else-if="!(templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box')">
         Formatiing options: no field selected
-      </p>
+      </p> -->
     </div>
     <div class="flex-1 overflow-y-auto">
       <div v-if="!isCanvasLoaded " class="w-full h-full ">

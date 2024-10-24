@@ -1,351 +1,351 @@
 <template>
   <div class="editor-wrapper flex flex-col gap-2 relative h-max mb-4 overflow-y-auto ">
-    <div v-if="editor" class="toolbar static-menu">
+    <div v-if="editor" class="toolbar static-menu flex overflow-auto w-max p-2 flex-nowrap gap-2">
       <!-- Button for Bold -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.bold')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().chain().focus().toggleBold().run()"
         :class="{ 'is-active': editor.isActive('bold') }"
         @click="editor.chain().focus().toggleBold().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-bold" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-bold" size="lg" />
       </Button>
 
       <!-- Button for Italic -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.italic')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().chain().focus().toggleItalic().run()"
         :class="{ 'is-active': editor.isActive('italic') }"
         @click="editor.chain().focus().toggleItalic().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-italic" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-italic" size="lg" />
       </Button>
 
       <!-- Button for Strike -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.strike')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().chain().focus().toggleStrike().run()"
         :class="{ 'is-active': editor.isActive('strike') }"
         @click="editor.chain().focus().toggleStrike().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-strikethrough" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-strikethrough" size="lg" />
       </Button>
 
       <!-- Button for Code -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.code')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().chain().focus().toggleCode().run()"
         :class="{ 'is-active': editor.isActive('code') }"
         @click="editor.chain().focus().toggleCode().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-code" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-code" size="lg" />
       </Button>
 
       <!-- Button for Clear Marks -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.clear_marks')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         @click="editor.chain().focus().unsetAllMarks().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-eraser" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-eraser" size="lg" />
       </Button>
 
       <!-- Button for Clear Nodes -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.clear_nodes')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         @click="editor.chain().focus().clearNodes().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-trash-alt" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-trash-alt" size="lg" />
       </Button>
 
       <!-- Paragraph -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.paragraph')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('paragraph') }"
         @click="editor.chain().focus().setParagraph().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-paragraph" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-paragraph" size="lg" />
       </Button>
 
       <!-- Headings H1 to H6 -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_1')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
       >
-        <font-awesome-icon icon="fa-solid fa-heading" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
 
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_2')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
       >
-        <font-awesome-icon icon="fa-solid fa-heading" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
 
       <!-- Repeat for h3, h4, h5, h6 -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_3')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
       >
-        <font-awesome-icon icon="fa-solid fa-heading" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_4')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
       >
-        <font-awesome-icon icon="fa-solid fa-heading" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_5')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
       >
-        <font-awesome-icon icon="fa-solid fa-heading" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_6')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
       >
-        <font-awesome-icon icon="fa-solid fa-heading" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
 
       <!-- Bullet List -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.bullet_list')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('bulletList') }"
         @click="editor.chain().focus().toggleBulletList().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-list-ul" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-list-ul" size="lg" />
       </Button>
 
       <!-- Ordered List -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.ordered_list')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('orderedList') }"
         @click="editor.chain().focus().toggleOrderedList().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-list-ol" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-list-ol" size="lg" />
       </Button>
 
       <!-- Code Block -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.code_block')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('codeBlock') }"
         @click="editor.chain().focus().toggleCodeBlock().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-file-code" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-file-code" size="lg" />
       </Button>
 
       <!-- Blockquote -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.blockquote')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('blockquote') }"
         @click="editor.chain().focus().toggleBlockquote().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-quote-right" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-quote-right" size="lg" />
       </Button>
 
       <!-- Horizontal Rule -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.horizontal_rule')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         @click="editor.chain().focus().setHorizontalRule().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-minus" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-minus" size="lg" />
       </Button>
 
       <!-- Hard Break -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.hard_break')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         @click="editor.chain().focus().setHardBreak().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-level-down-alt" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-level-down-alt" size="lg" />
       </Button>
 
       <!-- Undo and Redo -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.undo')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().chain().focus().undo().run()"
         @click="editor.chain().focus().undo().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-undo" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-undo" size="lg" />
       </Button>
 
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.redo')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().chain().focus().redo().run()"
         @click="editor.chain().focus().redo().run()"
       >
-        <font-awesome-icon icon="fa-solid fa-redo" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-redo" size="lg" />
       </Button>
 
       <!-- Insert Table -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.insert_table')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().insertTable()"
         @click="addTable"
       >
-        <font-awesome-icon icon="fa-solid fa-table" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-table" size="lg" />
       </Button>
 
       <!-- Delete Table -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.delete_table')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().deleteTable()"
         @click="deleteTable"
       >
-        <font-awesome-icon icon="fa-solid fa-trash" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-trash" size="lg" />
       </Button>
 
       <!-- Add Column Before -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_column_before')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().addColumnBefore()"
         @click="addColumnBefore"
       >
-        <font-awesome-icon icon="fa-solid fa-arrow-left" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-arrow-left" size="lg" />
       </Button>
 
       <!-- Add Column After -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_column_after')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().addColumnAfter()"
         @click="addColumnAfter"
       >
-        <font-awesome-icon icon="fa-solid fa-arrow-right" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-arrow-right" size="lg" />
       </Button>
 
       <!-- Delete Column -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.delete_column')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().deleteColumn()"
         @click="deleteColumn"
       >
-        <font-awesome-icon icon="fa-solid fa-trash-alt" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-trash-alt" size="lg" />
       </Button>
 
       <!-- Add Row Before -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_row_before')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().addRowBefore()"
         @click="addRowBefore"
       >
-        <font-awesome-icon icon="fa-solid fa-arrow-up" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-arrow-up" size="lg" />
       </Button>
 
       <!-- Add Row After -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_row_after')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().addRowAfter()"
         @click="addRowAfter"
       >
-        <font-awesome-icon icon="fa-solid fa-arrow-down" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-arrow-down" size="lg" />
       </Button>
 
       <!-- Delete Row -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.delete_row')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().deleteRow()"
         @click="deleteRow"
       >
-        <font-awesome-icon icon="fa-solid fa-trash" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-trash" size="lg" />
       </Button>
 
       <!-- Merge Cells -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.merge_cells')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().mergeCells()"
         @click="mergeCells"
       >
-        <font-awesome-icon icon="fa-solid fa-object-group" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-object-group" size="lg" />
       </Button>
 
       <!-- Split Cell -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.split_cell')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().splitCell()"
         @click="splitCell"
       >
-        <font-awesome-icon icon="fa-solid fa-object-ungroup" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-object-ungroup" size="lg" />
       </Button>
 
       <!-- Toggle Header Column -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.toggle_header_column')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().toggleHeaderColumn()"
         @click="toggleHeaderColumn"
       >
-        <font-awesome-icon icon="fa-solid fa-columns" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-columns" size="lg" />
       </Button>
 
       <!-- Toggle Header Row -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.toggle_header_row')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().toggleHeaderRow()"
         @click="toggleHeaderRow"
       >
-        <font-awesome-icon icon="fa-light fa-rows" size="sm" />
+        <font-awesome-icon icon="fa-light fa-rows" size="lg" />
       </Button>
 
       <!-- Toggle Header Cell -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.toggle_header_cell')"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().toggleHeaderCell()"
         @click="toggleHeaderCell"
       >
-        <font-awesome-icon icon="fa-solid fa-table-cells" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-table-cells" size="lg" />
       </Button>
       <Button
         v-tooltip="'Insert image'"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         @click="() => showInsertImageForm = true"
       >
-        <font-awesome-icon icon="fa-solid fa-image" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-image" size="lg" />
       </Button>
       <Button
         v-if="templateGeneralInformation?.useCase === 'Form to doc'"
         v-tooltip="'Insert form field'"
-        class="w-[26px] px-0 h-[26px]"
+        class="w-[40px] px-0 h-[40px]"
         @click="showAddFormFieldsForm = true"
       >
-        <font-awesome-icon icon="fa-solid fa-file-lines" size="sm" />
+        <font-awesome-icon icon="fa-solid fa-file-lines" size="lg" />
       </Button>
       <input
         type="color"
@@ -601,14 +601,17 @@ function addDraggableBlock() {
 
 <style scoped>
 .static-menu {
+  /*
   background-color: #ffffff;
   border-radius: 0.7rem;
   box-shadow: var(--shadow);
   display: flex;
   width:100%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding: 0.2rem;
+  overflow-x: auto;
   gap:6px;
+   */
 }
 
 .static-menu button {
