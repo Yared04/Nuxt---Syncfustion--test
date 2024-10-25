@@ -3,32 +3,100 @@
     <EjsColorpicker
       v-model="color"
       :show-recent-colors="true"
+      mode="Palette"
+      :columns="roundedPalettesColn"
+      :preset-colors="roundedPaletteColors"
+      :before-tile-render="beforeRoundedTileRender"
     />
   </div>
-  <!-- :preset-colors="customColors" -->
 </template>
 
 <script setup>
 import { ColorPickerComponent as EjsColorpicker } from '@syncfusion/ej2-vue-inputs'
-import { enableRipple } from '@syncfusion/ej2-base'
+import { createElement } from '@syncfusion/ej2-base'
+
+// import { enableRipple } from '@syncfusion/ej2-base'
 
 const emit = defineEmits(['setColor'])
-
-enableRipple(true)
+// const biggerPalettesColn = ref(4)
+const roundedPalettesColn = ref(5)
+// enableRipple(true)
+onMounted(() => {
+  nextTick(() => {
+    if (window.browserDetails.isDevice)
+      document.getElementById('custom-control').classList.add('e-mobile-control')
+  })
+})
 
 const color = ref('#000')
 watch(color, (val) => {
-  console.log('cahneg  in color val', val)
   emit('setColor', val)
 })
 
-// const customColors = {
-//   custom1: ['#ef9a9a', '#e57373', '#ef5350', '#f44336', '#f48fb1', '#f06292', '#ec407a', '#e91e63', '#ce93d8', '#ba68c8', '#ab47bc', '#9c27b0', '#b39ddb', '#9575cd', '#7e57c2', '#673AB7'],
-//   custom2: ['#9FA8DA', '#7986CB', '#5C6BC0', '#3F51B5', '#90CAF9', '#64B5F6', '#42A5F5', '#2196F3', '#81D4FA', '#4FC3F7', '#29B6F6', '#03A9F4', '#80DEEA', '#4DD0E1', '#26C6DA', '#00BCD4'],
-//   custom3: ['#80CBC4', '#4DB6AC', '#26A69A', '#009688', '#A5D6A7', '#81C784', '#66BB6A', '#4CAF50', '#C5E1A5', '#AED581', '#9CCC65', '#8BC34A', '#E6EE9C', '#DCE775', '#D4E157', '#CDDC39'],
-// }
+const roundedPaletteColors = ref ({ custom1: ['#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#fff', '#eb144c', '#f78da7', '#9900ef'] })
+
+function beforeRoundedTileRender(args) {
+  args.element.classList.add('e-rounded-palette')
+}
 </script>
 
 <style>
+.col-lg-6.e-rounded-wrap {
+    margin-top: 35px;
+    width: 33%;
+}
 
+/* Scrollable palette customization */
+#scroll-palette+.e-container .e-custom-palette.e-palette-group,
+.e-bigger #scroll-palette+.e-container .e-custom-palette.e-palette-group {
+    height: 125px;
+}
+
+#custom-control .e-container .e-palette .e-scroll-palette.e-selected::before {
+    content: '\e933';
+}
+.tailwind #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.tailwind-dark #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before {
+    content: '\e856';
+}
+.bootstrap5 #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.bootstrap5-dark #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before {
+    content: '\e727';
+}
+.bootstrap4 #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.bootstrap4-dark #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before {
+    content: '\e718';
+}
+.bootstrap #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.bootstrap-dark #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.fabric #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.fabric-dark #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before,
+.highcontrast #custom-control .e-container .e-palette .e-scroll-palette.e-selected::before {
+    content: '\e7ff';
+}
+.highcontrast #custom-control .e-container .e-palette {
+    border-bottom-color: transparent;
+}
+
+/* Rounded corner palette customization */
+.e-container .e-palette .e-rounded-palette {
+    border-radius: 4px;
+    margin: 5px;
+    height: 30px;
+    width: 30px;
+}
+.e-bigger .e-container .e-palette .e-rounded-palette {
+    height: 36px;
+    width: 36px;
+}
+ .e-container .e-palette .e-rounded-palette:hover,
+ .e-container .e-palette .e-scroll-palette:hover {
+    box-shadow: none;
+}
+ .e-container .e-palette .e-circle-palette.e-selected,
+ .e-container .e-palette .e-rounded-palette.e-selected,
+ .e-container .e-palette .e-square-palette.e-selected,
+ .e-container .e-palette .e-scroll-palette.e-selected {
+    outline: none;
+}
 </style>
