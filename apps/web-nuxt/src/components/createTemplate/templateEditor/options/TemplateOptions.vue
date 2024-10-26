@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4">
+  <div class="mt-4 p-4">
     <div class="mb-4">
       <p class="font-poppins text-md text-surface-600">
         {{ $t('Cp_templateEditor_templateOptions.template_name') }}<span :class="{ 'text-red-500': templateNameError }"> *</span>

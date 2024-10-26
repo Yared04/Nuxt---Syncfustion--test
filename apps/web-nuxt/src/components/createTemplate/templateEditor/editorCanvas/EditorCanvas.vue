@@ -6,7 +6,7 @@
       }"
     />
 
-    <div class="h-[62px] rounded mb-3 sticky top-0 left-0 border flex items-center">
+    <div class="h-[62px] rounded mb-3 sticky top-0 left-0  flex items-center">
       <div v-show="templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box'">
         <TipTapToolbar />
       </div>
