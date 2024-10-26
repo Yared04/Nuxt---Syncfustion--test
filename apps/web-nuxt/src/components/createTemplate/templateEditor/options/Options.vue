@@ -2,7 +2,7 @@
   <div class="flex-1 h-full overflow-auto " :style="{ minWidth: '200px' }">
     <!-- template options -->
     <div v-if="!templateEditorStore.showOptionsBar || props?.isExpertEditor">
-      <div class="w-full mb-6 justify-left  h-[62px] rounded-md text-lg text-primary-500 bg-primary-50 flex items-center justify-center  transition-all ease-linear duration-75">
+      <div class="w-full mb-3 justify-left  h-[62px] rounded-md text-lg text-primary-500 bg-primary-50 flex items-center justify-center  transition-all ease-linear duration-75">
         <p class="font-poppins">
           {{ $t('Cp_templateEditor_options.template_options') }}
         </p>
@@ -11,12 +11,12 @@
     </div>
     <!-- field options -->
     <div v-else-if="templateEditorStore.selectedAddedField?.fieldType !== ''">
-      <div class="w-full mb-6 justify-left gap-2 h-[62px] rounded-md text-lg text-primary-500 bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75">
+      <div class="w-full mb-3 justify-left gap-2 h-[62px] rounded-md text-lg text-primary-500 bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75">
         <p class="font-poppins">
           {{ $t('Cp_templateEditor_options.field_options') }}
         </p>
       </div>
-      <div class="transition-all duration-200 ease-linear rounded-md min-h-max pb-6 bg-surface-50 px-5 py-2 overflow-hidden">
+      <div class="transition-all duration-200 ease-linear rounded-md min-h-max pb-6 bg-surface-50 px-5 py-2 overflow-hidden ">
         <p class="font-poppins text-lg justify-center text-center text-gray-400 text-primaryBlue font-thin my-3">
           <span v-if="templateEditorStore.selectedAddedField?.fieldType === 'Static text' || templateEditorStore.selectedAddedField?.fieldType === 'Static date' || templateEditorStore.selectedAddedField?.fieldType === 'Static time' || templateEditorStore.selectedAddedField?.fieldType === 'Form text' || templateEditorStore.selectedAddedField?.fieldType === 'Form image' || templateEditorStore.selectedAddedField?.fieldType === 'Form date' || templateEditorStore.selectedAddedField?.fieldType === 'Form time' || templateEditorStore.selectedAddedField?.fieldType === 'Form long text' ">
             {{ $t(`Cp_templateEditor_options.${templateEditorStore?.selectedAddedField?.fieldType.replace(' ', '_').toLowerCase()}`) }}

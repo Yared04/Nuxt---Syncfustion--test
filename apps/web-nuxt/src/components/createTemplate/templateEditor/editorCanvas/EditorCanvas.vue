@@ -6,7 +6,7 @@
       }"
     />
 
-    <div class="h-[62px] rounded mb-3 sticky top-0 left-0">
+    <div class="h-[62px] rounded mb-3 sticky top-0 left-0 border flex items-center">
       <div v-show="templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box'">
         <TipTapToolbar />
       </div>
@@ -169,7 +169,7 @@ function updateScrollPosition() {
 const canvasWrapperHeight = ref(1)
 
 const canvasWrapperStyle = computed(() => ({
-  overflow: 'auto',
+  // overflowX: 'auto',
   position: 'relative',
   width: '900px',
   height: `${canvasWrapperHeight.value}px`,

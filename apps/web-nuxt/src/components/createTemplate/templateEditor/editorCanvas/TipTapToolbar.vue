@@ -1,6 +1,6 @@
 <template>
-  <div class="editor-wrapper flex flex-col gap-2 relative h-max mb-4 overflow-y-auto ">
-    <div v-if="editor" class="toolbar static-menu flex overflow-auto w-max p-2 flex-nowrap gap-2">
+  <div class="editor-wrapper flex flex-col gap-2 relative h-max  overflow-y-auto ">
+    <div v-if="editor" class="toolbar static-menu flex overflow-auto w-max px-2 flex-nowrap gap-2">
       <!-- Button for Bold -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.bold')"
@@ -73,8 +73,7 @@
         <font-awesome-icon icon="fa-solid fa-paragraph" size="lg" />
       </Button>
 
-      <!-- Headings H1 to H6 -->
-      <Button
+      <!-- <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_1')"
         class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
@@ -92,7 +91,6 @@
         <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
       </Button>
 
-      <!-- Repeat for h3, h4, h5, h6 -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.heading_3')"
         class="w-[40px] px-0 h-[40px]"
@@ -124,8 +122,8 @@
         @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
       >
         <font-awesome-icon icon="fa-solid fa-heading" size="lg" />
-      </Button>
-
+      </Button> -->
+      <HeadingSelector :editor="editor" />
       <!-- Bullet List -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.bullet_list')"
@@ -204,7 +202,7 @@
       </Button>
 
       <!-- Insert Table -->
-      <Button
+      <!-- <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.insert_table')"
         class="w-[40px] px-0 h-[40px]"
         :disabled="!editor.can().insertTable()"
@@ -213,7 +211,6 @@
         <font-awesome-icon icon="fa-solid fa-table" size="lg" />
       </Button>
 
-      <!-- Delete Table -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.delete_table')"
         class="w-[40px] px-0 h-[40px]"
@@ -223,7 +220,6 @@
         <font-awesome-icon icon="fa-solid fa-trash" size="lg" />
       </Button>
 
-      <!-- Add Column Before -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_column_before')"
         class="w-[40px] px-0 h-[40px]"
@@ -233,7 +229,6 @@
         <font-awesome-icon icon="fa-solid fa-arrow-left" size="lg" />
       </Button>
 
-      <!-- Add Column After -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_column_after')"
         class="w-[40px] px-0 h-[40px]"
@@ -243,7 +238,6 @@
         <font-awesome-icon icon="fa-solid fa-arrow-right" size="lg" />
       </Button>
 
-      <!-- Delete Column -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.delete_column')"
         class="w-[40px] px-0 h-[40px]"
@@ -253,7 +247,6 @@
         <font-awesome-icon icon="fa-solid fa-trash-alt" size="lg" />
       </Button>
 
-      <!-- Add Row Before -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_row_before')"
         class="w-[40px] px-0 h-[40px]"
@@ -263,7 +256,6 @@
         <font-awesome-icon icon="fa-solid fa-arrow-up" size="lg" />
       </Button>
 
-      <!-- Add Row After -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.add_row_after')"
         class="w-[40px] px-0 h-[40px]"
@@ -273,7 +265,6 @@
         <font-awesome-icon icon="fa-solid fa-arrow-down" size="lg" />
       </Button>
 
-      <!-- Delete Row -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.delete_row')"
         class="w-[40px] px-0 h-[40px]"
@@ -283,7 +274,6 @@
         <font-awesome-icon icon="fa-solid fa-trash" size="lg" />
       </Button>
 
-      <!-- Merge Cells -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.merge_cells')"
         class="w-[40px] px-0 h-[40px]"
@@ -293,7 +283,6 @@
         <font-awesome-icon icon="fa-solid fa-object-group" size="lg" />
       </Button>
 
-      <!-- Split Cell -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.split_cell')"
         class="w-[40px] px-0 h-[40px]"
@@ -303,7 +292,6 @@
         <font-awesome-icon icon="fa-solid fa-object-ungroup" size="lg" />
       </Button>
 
-      <!-- Toggle Header Column -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.toggle_header_column')"
         class="w-[40px] px-0 h-[40px]"
@@ -313,7 +301,6 @@
         <font-awesome-icon icon="fa-solid fa-columns" size="lg" />
       </Button>
 
-      <!-- Toggle Header Row -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.toggle_header_row')"
         class="w-[40px] px-0 h-[40px]"
@@ -323,7 +310,6 @@
         <font-awesome-icon icon="fa-light fa-rows" size="lg" />
       </Button>
 
-      <!-- Toggle Header Cell -->
       <Button
         v-tooltip="$t('Cp_templateEditor_tiptap_topbar.toggle_header_cell')"
         class="w-[40px] px-0 h-[40px]"
@@ -331,7 +317,8 @@
         @click="toggleHeaderCell"
       >
         <font-awesome-icon icon="fa-solid fa-table-cells" size="lg" />
-      </Button>
+      </Button> -->
+      <TableOptions :editor="editor" />
       <Button
         v-tooltip="'Insert image'"
         class="w-[40px] px-0 h-[40px]"
@@ -347,21 +334,9 @@
       >
         <font-awesome-icon icon="fa-solid fa-file-lines" size="lg" />
       </Button>
-      <!-- <input
-        type="color"
-        :value="editor.getAttributes('textStyle').color"
-        @input="editor.chain().focus().setColor($event.target.value).run()"
-      /> -->
-      <!-- :value="editor.getAttributes('textStyle').color" -->
-      <!-- <p> {{ editor.getAttributes('textStyle').color }}</p>
-      value="#ffffff"
-      @input="editor.chain().focus().setColor($event.target.value).run()" -->
+
       <SyncFusionColorPicker @set-color="(val) => editor.chain().focus().setColor(val).run() " />
-
-      <!-- <Button v-if="templateGeneralInformation?.useCase === 'Form to doc'" :label="$t('Cp_templateEditor_tiptap_topbar.add_form_field')" @click="showAddFormFieldsForm = true" /> -->
-
-      <!-- <Button v-if="props.isExpertEditor" label=" Add Draggable Block" sx="w-max nowrap " @click="addDraggableBlock" /> -->
-      <!-- <Button label="get html content" @click="console.log(editor.getHTML())" /> -->
+      <!-- <CustomDropdown /> -->
     </div>
 
     <Dialog v-model:visible="showAddFormFieldsForm" modal :header="$t('Cp_tiptap_toolbar_formOptions.add_form_field_dialog_title')" :style="{ minWidth: '40rem' }">
@@ -459,6 +434,9 @@ import { FilterMatchMode, FilterOperator } from 'primevue/api'
 import { ImageLibraryModal } from '@docspawn/image-library-modal'
 
 import SyncFusionColorPicker from './ToolbarComponent/SyncFusionColorPicker'
+import HeadingSelector from './ToolbarComponent/HeadingSelector'
+import TableOptions from './ToolbarComponent/TableOptions'
+import CustomDropdown from './ToolbarComponent/CustomDropdown'
 import { useTimestampFormats } from '@/composables/useTimestampFormats'
 import { templateEditorStore } from '@/composables/useTemplateEditorData'
 import { templateGeneralInformation } from '@/composables/useTemplateCreationData.js'
@@ -510,30 +488,28 @@ function insertImage() {
 }
 
 // Table-related actions
-const addTable = () => editor.value.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
-const deleteTable = () => editor.value.chain().focus().deleteTable().run()
+// const addTable = () => editor.value.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run()
+// const deleteTable = () => editor.value.chain().focus().deleteTable().run()
 
-// Column-related actions
-const addColumnBefore = () => editor.value.chain().focus().addColumnBefore().run()
-const addColumnAfter = () => editor.value.chain().focus().addColumnAfter().run()
-const deleteColumn = () => editor.value.chain().focus().deleteColumn().run()
+// // Column-related actions
+// const addColumnBefore = () => editor.value.chain().focus().addColumnBefore().run()
+// const addColumnAfter = () => editor.value.chain().focus().addColumnAfter().run()
+// const deleteColumn = () => editor.value.chain().focus().deleteColumn().run()
 
-// Row-related actions
-const addRowBefore = () => editor.value.chain().focus().addRowBefore().run()
-const addRowAfter = () => editor.value.chain().focus().addRowAfter().run()
-const deleteRow = () => editor.value.chain().focus().deleteRow().run()
+// // Row-related actions
+// const addRowBefore = () => editor.value.chain().focus().addRowBefore().run()
+// const addRowAfter = () => editor.value.chain().focus().addRowAfter().run()
+// const deleteRow = () => editor.value.chain().focus().deleteRow().run()
 
-// Cell-related actions
-const mergeCells = () => editor.value.chain().focus().mergeCells().run()
-const splitCell = () => editor.value.chain().focus().splitCell().run()
-const toggleHeaderColumn = () => editor.value.chain().focus().toggleHeaderColumn().run()
-const toggleHeaderRow = () => editor.value.chain().focus().toggleHeaderRow().run()
-const toggleHeaderCell = () => editor.value.chain().focus().toggleHeaderCell().run()
+// // Cell-related actions
+// const mergeCells = () => editor.value.chain().focus().mergeCells().run()
+// const splitCell = () => editor.value.chain().focus().splitCell().run()
+// const toggleHeaderColumn = () => editor.value.chain().focus().toggleHeaderColumn().run()
+// const toggleHeaderRow = () => editor.value.chain().focus().toggleHeaderRow().run()
+// const toggleHeaderCell = () => editor.value.chain().focus().toggleHeaderCell().run()
 const htmlContent = ref('')
 
 function addFormInputToTextbox() {
-  // Insert the selected fruit wrapped in {{}} into the editor
-  // editor.value.chain().focus().insertContent(`{{dataset[${formInputName.value}]}}`).run()
   const hash = uuidv4()
   if (!formInputName.value || !selectedFormInput.value.value)
     return
@@ -565,23 +541,7 @@ function insertOnEditor(data) {
   editor.value.chain().focus().insertContent(`{{dataset[${data?.name}]}}`).run()
   showAddFormFieldsForm.value = false
 }
-// async function getHTMLContent() {
-//   if (editor.value)
-//     htmlContent.value = editor.value.getHTML()
-// }
 
-// const selectedDatasetkey = ref(null)
-
-// function insetDatasetKey() {
-//   if (!selectedDatasetkey.value)
-//     return
-
-//   // Insert the selected fruit wrapped in {{}} into the editor
-//   editor.value.chain().focus().insertContent(`{{dataset[${selectedDatasetkey.value}]}}`).run()
-
-//   // Reset the dropdown
-//   selectedDatasetkey.value = null
-// }
 function addDraggableBlock() {
   const view = editor.value.view
   const { state, dispatch } = view
@@ -607,20 +567,6 @@ function addDraggableBlock() {
 </script>
 
 <style scoped>
-.static-menu {
-  /*
-  background-color: #ffffff;
-  border-radius: 0.7rem;
-  box-shadow: var(--shadow);
-  display: flex;
-  width:100%;
-  flex-wrap: nowrap;
-  padding: 0.2rem;
-  overflow-x: auto;
-  gap:6px;
-   */
-}
-
 .static-menu button {
   background-color: unset;
   color: #009ee2;

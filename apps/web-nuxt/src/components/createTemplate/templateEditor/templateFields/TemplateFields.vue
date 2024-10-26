@@ -5,7 +5,7 @@
       <div
         v-if="templateEditorStore.ShowAddedFieldsinTemplateFields === true"
         icon="pi pi-angle-left"
-        class="w-full mb-8 justify-left gap-2 h-[62px] text-lg rounded-md text-primary-500 cursor-pointer bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75 hover:border hover:border-primaryBlue"
+        class="w-full mb-3 justify-left gap-2 h-[62px] text-lg rounded-md text-primary-500 cursor-pointer bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75 hover:border hover:border-primaryBlue"
         @click="templateEditorStore.ShowAddedFieldsinTemplateFields = false"
       >
         <i class="pi pi-plus"></i>
@@ -16,7 +16,7 @@
       <div
         v-else
         icon="pi pi-angle-left"
-        class="w-full mb-8 justify-left gap-2 h-[62px] rounded-md text-lg text-primary-500 cursor-pointer bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75 hover:border hover:border-primaryBlue"
+        class="w-full mb-3 justify-left gap-2 h-[62px] rounded-md text-lg text-primary-500 cursor-pointer bg-primary-50 flex items-center justify-center gap-2 transition-all ease-linear duration-75 hover:border hover:border-primaryBlue"
         @click="templateEditorStore.ShowAddedFieldsinTemplateFields = true"
       >
         <i class="pi pi-angle-left"></i>

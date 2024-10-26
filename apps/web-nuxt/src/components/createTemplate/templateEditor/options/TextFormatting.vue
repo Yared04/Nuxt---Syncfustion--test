@@ -1,6 +1,6 @@
 <template>
   <div class="mt-0 bg-white p-0 ">
-    <div class="flex flex-wrap  gap-2 p-2">
+    <div class="flex flex-wrap  gap-2 px-2">
       <!-- Select Font Button -->
       <!-- v-if="isEditableFieldType" -->
       <Button
