@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-primary-500 rounded-lg flex items-center">
+  <div class="border border-primary-500 rounded-lg flex items-center h-[40px]">
     <EjsColorpicker
       v-model="color"
       :show-recent-colors="true"
@@ -38,7 +38,7 @@ watch(() => props?.selectedColor, (val) => {
     color.value = val
 })
 
-const roundedPaletteColors = ref ({ custom1: ['#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#fff', '#eb144c', '#f78da7', '#9900ef'] })
+const roundedPaletteColors = ref ({ custom1: ['#000', '#fff', '#e12501', '#4f7a28', '#0242a8', '#ff6900', '#fcb900', '#8ed1fc', '#f78da7', '#9900ef'] })
 
 function beforeRoundedTileRender(args) {
   args.element.classList.add('e-rounded-palette')
@@ -89,10 +89,12 @@ function beforeRoundedTileRender(args) {
     margin: 5px;
     height: 30px;
     width: 30px;
+    border:1px solid lightgray;
 }
 .e-bigger .e-container .e-palette .e-rounded-palette {
     height: 36px;
     width: 36px;
+
 }
  .e-container .e-palette .e-rounded-palette:hover,
  .e-container .e-palette .e-scroll-palette:hover {
@@ -103,5 +105,6 @@ function beforeRoundedTileRender(args) {
  .e-container .e-palette .e-square-palette.e-selected,
  .e-container .e-palette .e-scroll-palette.e-selected {
     outline: none;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 </style>

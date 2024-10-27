@@ -33,7 +33,7 @@
         :disabled="!isEditableFieldType"
         outlined
         class="w-[40px] px-0 h-[40px]"
-        :class="{ 'is-active': activeTextStyles.underline }"
+        :class="{ 'is-active': activeTextStyles.underline && isEditableFieldType }"
         @click="toggleUnderline"
       >
         <font-awesome-icon icon="fa-solid fa-underline" size="lg" />
@@ -47,7 +47,7 @@
         :disabled="!isEditableFieldType"
         outlined
         class="w-[40px] px-0 h-[40px]"
-        :class="{ 'is-active': activeTextStyles.fontWeight === 700 }"
+        :class="{ 'is-active': activeTextStyles.fontWeight === 700 && isEditableFieldType }"
         @click="toggleBold"
       >
         <font-awesome-icon icon="fa-solid fa-bold" size="lg" />
@@ -61,7 +61,7 @@
         :disabled="!isEditableFieldType"
         outlined
         class="w-[40px] px-0 h-[40px]"
-        :class="{ 'is-active': activeTextStyles.fontStyle === 'italic' }"
+        :class="{ 'is-active': activeTextStyles.fontStyle === 'italic' && isEditableFieldType }"
         @click="toggleItalic"
       >
         <font-awesome-icon icon="fa-solid fa-italic" size="lg" />
@@ -75,7 +75,7 @@
         :disabled="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'"
         outlined
         class="w-[40px] px-0 h-[40px]"
-        :class="{ 'is-active': activeTextStyles.textAlign === 'left' }"
+        :class="{ 'is-active': activeTextStyles.textAlign === 'left' && templateEditorStore.selectedAddedField?.fieldType === 'Form long text' }"
         @click="setTextAlign('left')"
       >
         <font-awesome-icon icon="fa-solid fa-align-left" size="lg" />
@@ -275,5 +275,9 @@ onMounted(() => {
 .is-active:hover {
   background-color: var(--purple-contrast);
   color: #000;
+}
+:deep(button:disabled){
+  color: grey;
+  border-color:lightgray;
 }
 </style>
