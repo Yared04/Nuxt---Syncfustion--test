@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-primary-500 rounded-lg flex items-center h-[40px]">
+  <div class="border border-primary-500 rounded-lg flex items-center h-[40px] " :class="{ 'border-surface-200 pointer-events-none': isDisabled }">
     <EjsColorpicker
       v-model="color"
       :show-recent-colors="true"
@@ -16,7 +16,7 @@ import { ColorPickerComponent as EjsColorpicker } from '@syncfusion/ej2-vue-inpu
 import { createElement } from '@syncfusion/ej2-base'
 
 // import { enableRipple } from '@syncfusion/ej2-base'
-const props = defineProps(['selectedColor'])
+const props = defineProps(['selectedColor', 'isDisabled'])
 
 const emit = defineEmits(['setColor'])
 // const biggerPalettesColn = ref(4)
@@ -38,7 +38,8 @@ watch(() => props?.selectedColor, (val) => {
     color.value = val
 })
 
-const roundedPaletteColors = ref ({ custom1: ['#000', '#fff', '#e12501', '#4f7a28', '#0242a8', '#ff6900', '#fcb900', '#8ed1fc', '#f78da7', '#9900ef'] })
+const roundedPaletteColors = ref ({ custom1: ['#000', '#fff', '#e12501', '#4f7a28', '#0242a8'] })
+// '#ff6900', '#fcb900', '#8ed1fc', '#f78da7', '#9900ef'
 
 function beforeRoundedTileRender(args) {
   args.element.classList.add('e-rounded-palette')
