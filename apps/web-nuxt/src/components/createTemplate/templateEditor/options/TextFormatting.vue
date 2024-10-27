@@ -146,6 +146,7 @@
 
       <SyncFusionColorPicker
         :selected-color="selectedColor"
+        :is-disabled="!canBeColored"
         @set-color="(val) => {
           selectedColor = val
           activeTextStyles.fill = val
@@ -171,6 +172,10 @@ const selectedCharSpacing = ref()
 
 // Computed property to check editable field types
 const isEditableFieldType = computed(() => {
+  const fieldType = templateEditorStore.selectedAddedField?.fieldType
+  return ['Data field', 'Dataset date', 'Static text', 'Form text', 'Form date', 'Form time', 'Static date', 'Static time', 'Form long text', 'Form list'].includes(fieldType)
+})
+const canBeColored = computed(() => {
   const fieldType = templateEditorStore.selectedAddedField?.fieldType
   return ['Data field', 'Dataset date', 'Static text', 'Form text', 'Form date', 'Form time', 'Static date', 'Static time', 'Form long text', 'Form list'].includes(fieldType)
 })
