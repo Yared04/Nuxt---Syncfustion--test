@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     'nuxt-tiptap-editor',
   ],
   tiptap: {
-    prefix: 'Tiptap', // This prefix will be used for importing Tiptap components
+    prefix: 'Tiptap',
   },
 
   i18n: {
