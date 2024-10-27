@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <div class="h-12 w-full flex items-center justify-between">
+    <div class="h-12 w-full flex  justify-between">
       <div class="flex gap-2">
         <!-- <div v-tooltip.top="$t('Cp_templateEditor_elementRotation.rotate_clockwise')" class="h-8 w-8 text-2xl text-black flex items-center justify-center rounded-md cursor-pointer p-2" @click="rotateClockwise">
           <font-awesome-icon icon="fa-light fa-arrow-rotate-right" size="xs" />
@@ -11,8 +11,9 @@
         <!-- Rotate Clockwise Button -->
         <Button
           v-tooltip="$t('Cp_templateEditor_elementRotation.rotate_clockwise')"
+          :disabled="!isRotatable"
           outlined
-          class="w-max px-2"
+          class="w-[40px] px-0 h-[40px]"
           @click="rotateClockwise"
         >
           <font-awesome-icon icon="fa-solid fa-arrow-rotate-right" size="lg" />
@@ -21,8 +22,9 @@
         <!-- Rotate Anticlockwise Button -->
         <Button
           v-tooltip="$t('Cp_templateEditor_elementRotation.rotate_anticlockwise')"
+          :disabled="!isRotatable"
           outlined
-          class="w-max px-2"
+          class="w-[40px] px-0 h-[40px]"
           @click="rotateAntiClockwise"
         >
           <font-awesome-icon icon="fa-solid fa-arrow-rotate-left" size="lg" />
@@ -39,8 +41,8 @@
 import canvasService from '@/composables/useTemplateCanvas'
 import { templateEditorStore } from '@/composables/useTemplateEditorData'
 
+const props = defineProps(['isRotatable'])
 const rotationVal = ref(0)
-
 function initiateRotation() {
   const canvas = canvasService.getCanvas()
   if (canvas) {

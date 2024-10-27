@@ -1,12 +1,12 @@
 <template>
-  <div class="mt-2 bg-white p-2">
-    <div class="flex flex-wrap items-center gap-3">
+  <div class="mt-0 bg-white p-0 ">
+    <div class="flex flex-wrap  gap-2 px-2">
       <!-- Select Font Button -->
       <Button
-        v-if="isEditableFieldType"
         v-tooltip="'Select Font'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2"
+        class="w-[40px] px-0 h-[40px]"
         @click="toggleFontOptions"
       >
         <font-awesome-icon icon="fa-solid fa-font" size="lg" />
@@ -14,10 +14,10 @@
 
       <!-- Font Size Button -->
       <Button
-        v-if="isEditableFieldType"
         v-tooltip="'Font Size'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2"
+        class="w-[40px] px-0 h-[40px]"
         @click="toggleFontSizeOptions"
       >
         <font-awesome-icon icon="fa-light fa-text-size" size="lg" />
@@ -25,23 +25,22 @@
 
       <!-- Underline Button -->
       <Button
-        v-if="isEditableFieldType"
         v-tooltip="'Underline'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2"
-        :class="{ 'is-active': activeTextStyles.underline }"
+        class="w-[40px] px-0 h-[40px]"
+        :class="{ 'is-active': activeTextStyles.underline && isEditableFieldType }"
         @click="toggleUnderline"
       >
         <font-awesome-icon icon="fa-solid fa-underline" size="lg" />
       </Button>
 
-      <!-- Bold Button -->
       <Button
-        v-if="isEditableFieldType"
         v-tooltip="'Bold'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2"
-        :class="{ 'is-active': activeTextStyles.fontWeight === 700 }"
+        class="w-[40px] px-0 h-[40px]"
+        :class="{ 'is-active': activeTextStyles.fontWeight === 700 && isEditableFieldType }"
         @click="toggleBold"
       >
         <font-awesome-icon icon="fa-solid fa-bold" size="lg" />
@@ -49,42 +48,47 @@
 
       <!-- Italic Button -->
       <Button
-        v-if="isEditableFieldType"
+
         v-tooltip="'Italic'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2"
-        :class="{ 'is-active': activeTextStyles.fontStyle === 'italic' }"
+        class="w-[40px] px-0 h-[40px]"
+        :class="{ 'is-active': activeTextStyles.fontStyle === 'italic' && isEditableFieldType }"
         @click="toggleItalic"
       >
         <font-awesome-icon icon="fa-solid fa-italic" size="lg" />
       </Button>
 
       <!-- Text Align Buttons -->
+
       <Button
-        v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'"
         v-tooltip="'Align Left'"
+        :disabled="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'"
         outlined
-        class="w-max px-2"
-        :class="{ 'is-active': activeTextStyles.textAlign === 'left' }"
+        class="w-[40px] px-0 h-[40px]"
+        :class="{ 'is-active': activeTextStyles.textAlign === 'left' && templateEditorStore.selectedAddedField?.fieldType === 'Form long text' }"
         @click="setTextAlign('left')"
       >
         <font-awesome-icon icon="fa-solid fa-align-left" size="lg" />
       </Button>
+      <!-- v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'" -->
       <Button
-        v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'"
+
         v-tooltip="'Align Center'"
+        :disabled="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'"
         outlined
-        class="w-max px-2"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': activeTextStyles.textAlign === 'center' }"
         @click="setTextAlign('center')"
       >
         <font-awesome-icon icon="fa-solid fa-align-center" size="lg" />
       </Button>
+      <!-- v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'" -->
       <Button
-        v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'"
         v-tooltip="'Align Right'"
+        :disabled="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'"
         outlined
-        class="w-max px-2"
+        class="w-[40px] px-0 h-[40px]"
         :class="{ 'is-active': activeTextStyles.textAlign === 'right' }"
         @click="setTextAlign('right')"
       >
@@ -93,26 +97,28 @@
 
       <!-- Character Spacing Buttons -->
       <Button
-        v-if="isEditableFieldType"
         v-tooltip="'Reduce Character Spacing'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2 "
+        class="w-[40px] px-0 h-[40px]"
         @click="reduceCharacterSpacing"
       >
         <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-to-line" size="lg" />
       </Button>
+
       <Button
-        v-if="isEditableFieldType"
         v-tooltip="'Increase Character Spacing'"
+        :disabled="!isEditableFieldType"
         outlined
-        class="w-max px-2 "
+        class="w-[40px] px-0 h-[40px]"
         @click="increaseCharacterSpacing"
       >
         <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-from-line" size="lg" />
       </Button>
 
       <!-- Additional Elements -->
-      <ElementRotation v-if="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'" />
+
+      <ElementRotation :is-rotatable="isRotatable" />
 
       <!-- Font Selection Dropdown -->
       <Dropdown
@@ -122,7 +128,7 @@
         option-label="label"
         option-value="value"
         placeholder="Select font"
-        class="w-12 md:w-44 mt-3"
+        class="w-12 md:w-44 mt-0 h-[40px]  "
         @change="changeFont"
       />
       <Dropdown
@@ -132,24 +138,25 @@
         option-label="label"
         option-value="value"
         placeholder="Select font size"
-        class="w-12 md:w-32 mt-3"
+        class="w-12 md:w-32 mt-0  h-[40px]  "
         @change="changeSize"
       />
 
       <!-- Color Picker -->
-      <input
-        v-if="isEditableFieldType"
-        v-model="selectedColor"
-        type="color"
-        class="ml-1"
-        @input="changeColor"
+
+      <SyncFusionColorPicker
+        :selected-color="selectedColor"
+        @set-color="(val) => {
+          selectedColor = val
+          activeTextStyles.fill = val
+        } "
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
+import SyncFusionColorPicker from '../editorCanvas/ToolbarComponent/SyncFusionColorPicker'
 import ElementRotation from './ElementRotation.vue'
 import { activeTextStyles } from '@/composables/useTemplateEditorData'
 import { useTextFormattingOptions } from '@/composables/useTextFormattingOptions'
@@ -166,6 +173,10 @@ const selectedCharSpacing = ref()
 const isEditableFieldType = computed(() => {
   const fieldType = templateEditorStore.selectedAddedField?.fieldType
   return ['Data field', 'Dataset date', 'Static text', 'Form text', 'Form date', 'Form time', 'Static date', 'Static time', 'Form long text', 'Form list'].includes(fieldType)
+})
+const isRotatable = computed(() => {
+  const fieldType = templateEditorStore.selectedAddedField?.fieldType
+  return ['Data field', 'Dataset date', 'Static text', 'Form text', 'Form date', 'Form time', 'Static date', 'Static time', 'Form list', 'Static image', 'Dataset image', 'Form image'].includes(fieldType)
 })
 
 // Handlers for font, size, and color changes
@@ -247,5 +258,9 @@ onMounted(() => {
 .is-active:hover {
   background-color: var(--purple-contrast);
   color: #000;
+}
+:deep(button:disabled){
+  color: grey;
+  border-color:lightgray;
 }
 </style>
