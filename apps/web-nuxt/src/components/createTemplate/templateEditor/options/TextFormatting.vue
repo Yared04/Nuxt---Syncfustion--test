@@ -2,7 +2,6 @@
   <div class="mt-0 bg-white p-0 ">
     <div class="flex flex-wrap  gap-2 px-2">
       <!-- Select Font Button -->
-      <!-- v-if="isEditableFieldType" -->
       <Button
         v-tooltip="'Select Font'"
         :disabled="!isEditableFieldType"
@@ -14,7 +13,6 @@
       </Button>
 
       <!-- Font Size Button -->
-      <!-- v-if="isEditableFieldType" -->
       <Button
         v-tooltip="'Font Size'"
         :disabled="!isEditableFieldType"
@@ -26,9 +24,7 @@
       </Button>
 
       <!-- Underline Button -->
-      <!-- v-if="isEditableFieldType" -->
       <Button
-
         v-tooltip="'Underline'"
         :disabled="!isEditableFieldType"
         outlined
@@ -39,10 +35,7 @@
         <font-awesome-icon icon="fa-solid fa-underline" size="lg" />
       </Button>
 
-      <!-- Bold Button -->
-      <!-- v-if="isEditableFieldType" -->
       <Button
-
         v-tooltip="'Bold'"
         :disabled="!isEditableFieldType"
         outlined
@@ -54,7 +47,6 @@
       </Button>
 
       <!-- Italic Button -->
-      <!-- v-if="isEditableFieldType" -->
       <Button
 
         v-tooltip="'Italic'"
@@ -68,9 +60,8 @@
       </Button>
 
       <!-- Text Align Buttons -->
-      <!-- v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'" -->
-      <Button
 
+      <Button
         v-tooltip="'Align Left'"
         :disabled="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'"
         outlined
@@ -94,7 +85,6 @@
       </Button>
       <!-- v-if="templateEditorStore.selectedAddedField?.fieldType === 'Form long text'" -->
       <Button
-
         v-tooltip="'Align Right'"
         :disabled="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'"
         outlined
@@ -106,7 +96,6 @@
       </Button>
 
       <!-- Character Spacing Buttons -->
-      <!-- v-if="isEditableFieldType" -->
       <Button
         v-tooltip="'Reduce Character Spacing'"
         :disabled="!isEditableFieldType"
@@ -116,7 +105,7 @@
       >
         <font-awesome-icon class="rotate-90" icon="fa-light fa-arrows-to-line" size="lg" />
       </Button>
-      <!-- v-if="isEditableFieldType" -->
+
       <Button
         v-tooltip="'Increase Character Spacing'"
         :disabled="!isEditableFieldType"
@@ -128,7 +117,7 @@
       </Button>
 
       <!-- Additional Elements -->
-      <!-- v-if="templateEditorStore.selectedAddedField?.fieldType !== 'Form long text'" -->
+
       <ElementRotation :is-rotatable="isRotatable" />
 
       <!-- Font Selection Dropdown -->
@@ -154,13 +143,7 @@
       />
 
       <!-- Color Picker -->
-      <!-- <input
-        v-if="isEditableFieldType"
-        v-model="selectedColor"
-        type="color"
-        class="ml-1"
-        @input="changeColor"
-      /> -->
+
       <SyncFusionColorPicker
         :selected-color="selectedColor"
         @set-color="(val) => {
