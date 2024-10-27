@@ -16,6 +16,7 @@ import { ColorPickerComponent as EjsColorpicker } from '@syncfusion/ej2-vue-inpu
 import { createElement } from '@syncfusion/ej2-base'
 
 // import { enableRipple } from '@syncfusion/ej2-base'
+const props = defineProps(['selectedColor'])
 
 const emit = defineEmits(['setColor'])
 // const biggerPalettesColn = ref(4)
@@ -31,6 +32,10 @@ onMounted(() => {
 const color = ref('#000')
 watch(color, (val) => {
   emit('setColor', val)
+})
+watch(() => props?.selectedColor, (val) => {
+  if (val !== color)
+    color.value = val
 })
 
 const roundedPaletteColors = ref ({ custom1: ['#ff6900', '#fcb900', '#7bdcb5', '#00d084', '#8ed1fc', '#0693e3', '#fff', '#eb144c', '#f78da7', '#9900ef'] })

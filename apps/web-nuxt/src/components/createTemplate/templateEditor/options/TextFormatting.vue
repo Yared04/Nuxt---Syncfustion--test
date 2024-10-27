@@ -154,19 +154,26 @@
       />
 
       <!-- Color Picker -->
-      <input
+      <!-- <input
         v-if="isEditableFieldType"
         v-model="selectedColor"
         type="color"
         class="ml-1"
         @input="changeColor"
+      /> -->
+      <SyncFusionColorPicker
+        :selected-color="selectedColor"
+        @set-color="(val) => {
+          selectedColor = val
+          activeTextStyles.fill = val
+        } "
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue'
+import SyncFusionColorPicker from '../editorCanvas/ToolbarComponent/SyncFusionColorPicker'
 import ElementRotation from './ElementRotation.vue'
 import { activeTextStyles } from '@/composables/useTemplateEditorData'
 import { useTextFormattingOptions } from '@/composables/useTextFormattingOptions'

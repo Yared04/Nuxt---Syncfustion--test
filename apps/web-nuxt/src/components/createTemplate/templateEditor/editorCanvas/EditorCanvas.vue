@@ -10,7 +10,7 @@
       <div v-show="templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box'">
         <TipTapToolbar />
       </div>
-      <div v-if="!(templateEditorStore?.selectedAddedField?.fieldType === 'Text box')">
+      <div v-if="!(templateEditorStore.showExpertEditor || templateEditorStore?.selectedAddedField?.fieldType === 'Text box')">
         <TextFormatting />
       </div>
       <!-- <div v-if=" templateEditorStore?.selectedAddedField?.fieldType !== 'Form checkbox group' && templateEditorStore?.selectedAddedField?.fieldType !== 'Text box' && templateEditorStore?.showOptionsBar" class="mb-6">
