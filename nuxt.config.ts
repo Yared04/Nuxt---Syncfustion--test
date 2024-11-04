@@ -32,9 +32,9 @@ export default defineNuxtConfig({
     },
   },
 
-  // build: {
-  //   transpile: [/@syncfusion/],
-  // },
+  build: {
+    transpile: [/@syncfusion/],
+  },
   devServer: {
     port: 3001,
   },
