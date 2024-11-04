@@ -1,6 +1,6 @@
 import {
   TreeViewPlugin,
-  ContextMenuPlugin,
+  ContextMenuComponent,
 } from "@syncfusion/ej2-vue-navigations";
 import { defineNuxtPlugin } from "#app";
 import {
@@ -14,7 +14,7 @@ import {
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(TreeViewPlugin);
-  nuxtApp.vueApp.use(ContextMenuPlugin);
+  nuxtApp.vueApp.component("EjsContextmenu", ContextMenuComponent);
   nuxtApp.vueApp.use(RichTextEditorPlugin);
   RichTextEditor.Inject(Toolbar, Image, Link, HtmlEditor);
 });
