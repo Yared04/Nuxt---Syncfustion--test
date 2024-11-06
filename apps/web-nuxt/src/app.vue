@@ -200,6 +200,16 @@ function submitEmail() {
     setToken('.....')
     isAuthenticated.value = true
   }
+  else if (email.value === 'samuel.n@tec.tech') {
+    setUser({ name: 'Samuel', email: 'samuel.n@tec.tech' })
+    setToken('.....')
+    isAuthenticated.value = true
+  }
+  else if (email.value === 'yared@tec.tech') {
+    setUser({ name: 'Yared', email: 'yared@tec.tech' })
+    setToken('.....')
+    isAuthenticated.value = true
+  }
   else {
     error.value = 'Not valid email'
   }
