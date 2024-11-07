@@ -34,7 +34,7 @@ export default defineNuxtConfig({
     },
   },
   build: {
-    transpile: ['/@syncfusion/ej2-vue-filemanager/'],
+    transpile: [/syncfusion\/ej2-vue-filemanager/],
   },
   devServer: {
     port: 3001,
