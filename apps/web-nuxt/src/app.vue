@@ -105,13 +105,13 @@ function submitEmail() {
     <p v-if="error" class="text-red-600">
       {{ error }}
     </p>
-    <!-- <RecaptchaV2
+    <RecaptchaV2
       @widget-id="handleWidgetId"
       @error-callback="handleErrorCallback"
       @expired-callback="handleExpiredCallback"
       @load-callback="handleLoadCallback"
       @verify-callback="handleVerifyCallback"
-    /> -->
+    />
     <Button label="Submit" @click="submitEmail" />
   </div>
   <NuxtLayout v-else>
@@ -143,31 +143,31 @@ const { token, setToken, user, setUser } = useAuth()
 const isAuthenticated = ref(false)
 const email = ref('')
 const error = ref('')
-// const verified = ref(false) // Track if recaptcha is verified
-// const recaptchaResponse = ref('') // Store the recaptcha response token
+const verified = ref(false) // Track if recaptcha is verified
+const recaptchaResponse = ref('') // Store the recaptcha response token
 
-// function handleWidgetId(widgetId: number) {
-//   console.log('Widget ID: ', widgetId)
-// }
-// function handleErrorCallback() {
-//   console.log('Error callback')
-// }
-// function handleExpiredCallback() {
-//   console.log('Expired callback')
-//   verified.value = false // Reset verification status if expired
-// }
-// function handleLoadCallback(response: unknown) {
-//   console.log('Load callback', response)
-//   if (response) {
-//     // recaptchaResponse.value = response // Save the response token
-//     verified.value = true // Mark CAPTCHA as successfully completed
-//   }
-// }
-// function handleVerifyCallback(response: string) {
-//   console.log('Verify callback', response)
-//   recaptchaResponse.value = response // Save the response token
-//   verified.value = true // Mark CAPTCHA as successfully completed
-// }
+function handleWidgetId(widgetId: number) {
+  // console.log('Widget ID: ', widgetId)
+}
+function handleErrorCallback() {
+  // console.log('Error callback')
+}
+function handleExpiredCallback() {
+  // console.log('Expired callback')
+  verified.value = false // Reset verification status if expired
+}
+function handleLoadCallback(response: unknown) {
+  // console.log('Load callback', response)
+  if (response) {
+    // recaptchaResponse.value = response // Save the response token
+    verified.value = true // Mark CAPTCHA as successfully completed
+  }
+}
+function handleVerifyCallback(response: string) {
+  // console.log('Verify callback', response)
+  recaptchaResponse.value = response // Save the response token
+  verified.value = true // Mark CAPTCHA as successfully completed
+}
 
 function isSettingsRoute(path: string) {
   return path.split('/').includes('settings')
@@ -176,46 +176,46 @@ watch(user, (val) => {
   if (!val)
     isAuthenticated.value = false
 })
-onMounted(async () => {
-  if (user.value && token.value)
-    return
-})
+// onMounted(async () => {
+//   if (user.value && token.value)
+//     return
+// })
 
 function submitEmail() {
-  // if (verified.value) {
-  //   alert('Form submitted successfully')
-  error.value = ''
-  if (email.value === 'hanan@tec.tech') {
-    setUser({ name: 'Hanan', email: 'hanan@tec.tech' })
-    setToken('.....')
-    isAuthenticated.value = true
-  }
-  else if (email.value === 'adam@tec.tech') {
-    setUser({ name: 'Adam Duchemann', email: 'adam@tec.tech' })
-    setToken('.....')
-    isAuthenticated.value = true
-  }
-  else if (email.value === 'test@docspawn.com') {
-    setUser({ name: 'Test account', email: 'test@docspawn.com' })
-    setToken('.....')
-    isAuthenticated.value = true
-  }
-  else if (email.value === 'samuel.n@tec.tech') {
-    setUser({ name: 'Samuel', email: 'samuel.n@tec.tech' })
-    setToken('.....')
-    isAuthenticated.value = true
-  }
-  else if (email.value === 'yared@tec.tech') {
-    setUser({ name: 'Yared', email: 'yared@tec.tech' })
-    setToken('.....')
-    isAuthenticated.value = true
+  if (verified.value) {
+    // alert('Form submitted successfully')
+    error.value = ''
+    if (email.value === 'hanan@tec.tech') {
+      setUser({ name: 'Hanan', email: 'hanan@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else if (email.value === 'adam@tec.tech') {
+      setUser({ name: 'Adam Duchemann', email: 'adam@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else if (email.value === 'test@docspawn.com') {
+      setUser({ name: 'Test account', email: 'test@docspawn.com' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else if (email.value === 'samuel@tec.tech') {
+      setUser({ name: 'Samuel', email: 'samuel@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else if (email.value === 'yared@tec.tech') {
+      setUser({ name: 'Yared', email: 'yared@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else {
+      error.value = 'Not valid email'
+    }
   }
   else {
-    error.value = 'Not valid email'
+    alert('Please complete the CAPTCHA')
   }
-  // }
-  // else {
-  //   alert('Please complete the CAPTCHA')
-  // }
 }
 </script>
