@@ -193,6 +193,17 @@ export function useSettingItems() {
           subitems: [],
           nestedMenuVisible: false,
         },
+        {
+          title: 'Assets Library',
+          translationKey: 'assets_library',
+          icon: 'pi pi-folder',
+          fontawesome: 'faFolder',
+          route: '#assets-library',
+          isHovered: false,
+          componentId: 'assets-library',
+          subitems: [],
+          nestedMenuVisible: false,
+        },
       ],
     },
 
