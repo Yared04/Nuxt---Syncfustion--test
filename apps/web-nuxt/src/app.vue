@@ -20,7 +20,6 @@
         <div class="flex flex-col w-full">
           <div class="flex flex-row h-full bg-secondary p-4">
             <MenuBar v-if="isSettingsRoute($route.path)" />
-
             <NuxtPage />
           </div>
         </div>
@@ -90,6 +89,16 @@ function submitEmail() {
       setToken('.....')
       isAuthenticated.value = true
     }
+    else if (email.value === 'samuel@tec.tech') {
+      setUser({ name: 'Samuel', email: 'samuel@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else if (email.value === 'yared@tec.tech') {
+      setUser({ name: 'Yared', email: 'yared@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
     else {
       error.value = 'Not valid email'
     }
@@ -133,7 +142,7 @@ function submitEmail() {
 import { useToast } from 'primevue/usetoast'
 import { useRoute, useRouter } from 'vue-router'
 
-// import { RecaptchaV2 } from 'vue3-recaptcha-v2'
+import { RecaptchaV2 } from 'vue3-recaptcha-v2'
 import SideBar from './components/layout/Sidebar.vue'
 import 'primeicons/primeicons.css'
 import MenuBar from './components/settings/MenuBar.vue'
@@ -147,17 +156,17 @@ const verified = ref(false) // Track if recaptcha is verified
 const recaptchaResponse = ref('') // Store the recaptcha response token
 
 function handleWidgetId(widgetId: number) {
-  // console.log('Widget ID: ', widgetId)
+  console.log('Widget ID: ', widgetId)
 }
 function handleErrorCallback() {
-  // console.log('Error callback')
+  console.log('Error callback')
 }
 function handleExpiredCallback() {
-  // console.log('Expired callback')
+  console.log('Expired callback')
   verified.value = false // Reset verification status if expired
 }
 function handleLoadCallback(response: unknown) {
-  // console.log('Load callback', response)
+  console.log('Load callback', response)
   if (response) {
     // recaptchaResponse.value = response // Save the response token
     verified.value = true // Mark CAPTCHA as successfully completed
