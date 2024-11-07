@@ -10,6 +10,9 @@
       <div id="integration">
         <Integration />
       </div>
+      <div id="assets-library" class="">
+        <AssetsLibrary />
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +22,7 @@ import { ref, watch } from 'vue'
 import DataSources from './data_sources'
 import List from '~/components/settings/list/list.vue'
 import Integration from '~/components/settings/integration/Integration.vue'
+import AssetsLibrary from '~/components/settings/data_source/AssetsLibrary.vue'
 </script>
 
 <style scoped>
