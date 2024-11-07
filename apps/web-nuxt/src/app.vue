@@ -20,7 +20,6 @@
         <div class="flex flex-col w-full">
           <div class="flex flex-row h-full bg-secondary p-4">
             <MenuBar v-if="isSettingsRoute($route.path)" />
-
             <NuxtPage />
           </div>
         </div>
@@ -90,6 +89,16 @@ function submitEmail() {
       setToken('.....')
       isAuthenticated.value = true
     }
+    else if (email.value === 'samuel@tec.tech') {
+      setUser({ name: 'Samuel', email: 'samuel@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
+    else if (email.value === 'yared@tec.tech') {
+      setUser({ name: 'Yared', email: 'yared@tec.tech' })
+      setToken('.....')
+      isAuthenticated.value = true
+    }
     else {
       error.value = 'Not valid email'
     }
@@ -133,7 +142,7 @@ function submitEmail() {
 import { useToast } from 'primevue/usetoast'
 import { useRoute, useRouter } from 'vue-router'
 
-// import { RecaptchaV2 } from 'vue3-recaptcha-v2'
+import { RecaptchaV2 } from 'vue3-recaptcha-v2'
 import SideBar from './components/layout/Sidebar.vue'
 import 'primeicons/primeicons.css'
 import MenuBar from './components/settings/MenuBar.vue'
