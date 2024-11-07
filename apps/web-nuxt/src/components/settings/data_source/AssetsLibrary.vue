@@ -21,7 +21,7 @@ import {
 } from '@syncfusion/ej2-vue-filemanager'
 
 const toast = useToast()
-const hostUrl = 'http://localhost:8090/'
+const hostUrl = 'https://node-js-fsp.onrender.com/'
 const ajaxSettings = {
   url: hostUrl,
   uploadUrl: `${hostUrl}Upload`,
