@@ -32,7 +32,9 @@ export default defineNuxtConfig({
     server: {
       cors: { origin: '*' },
     },
-
+  },
+  build: {
+    transpile: [/@syncfusion/],
   },
   devServer: {
     port: 3001,
