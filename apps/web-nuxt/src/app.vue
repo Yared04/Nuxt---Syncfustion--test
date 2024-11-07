@@ -156,17 +156,17 @@ const verified = ref(false) // Track if recaptcha is verified
 const recaptchaResponse = ref('') // Store the recaptcha response token
 
 function handleWidgetId(widgetId: number) {
-  // console.log('Widget ID: ', widgetId)
+  console.log('Widget ID: ', widgetId)
 }
 function handleErrorCallback() {
-  // console.log('Error callback')
+  console.log('Error callback')
 }
 function handleExpiredCallback() {
-  // console.log('Expired callback')
+  console.log('Expired callback')
   verified.value = false // Reset verification status if expired
 }
 function handleLoadCallback(response: unknown) {
-  // console.log('Load callback', response)
+  console.log('Load callback', response)
   if (response) {
     // recaptchaResponse.value = response // Save the response token
     verified.value = true // Mark CAPTCHA as successfully completed
