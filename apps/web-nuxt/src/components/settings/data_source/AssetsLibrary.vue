@@ -110,6 +110,7 @@ const folderPermissions = {
 function beforeSend(args) {
   if (args.action === 'read') {
     const json = JSON.parse(args.ajaxSettings.data)
+<<<<<<< HEAD
     const folder = json.path.split('/').slice(-2)[0]
     if (folder === 'Templates Library') {
       toolbarSettings.value = {
@@ -167,6 +168,16 @@ function beforeSend(args) {
       args.cancel = true
     }
     else if (folderPermissions[folder] && !folderPermissions[folder].includes(fileExtension)) {
+=======
+    const path = json[0].path
+    const fileExtension = json[3].filename.split('.').pop()
+    const folder = path.split('/').slice(-2)[0]
+    if (folder === 'Templates Library') {
+      args.cancel = true
+      toast.add({ severity: 'error', summary: 'Error', detail: 'You are not allowed to upload files to this folder.', life: 3000 })
+    }
+    else if (!folderPermissions[folder]?.includes(fileExtension)) {
+>>>>>>> 05a9a57 (fix: Modify the theme of the filemanager component)
       args.cancel = true
       // show a message if the file is not allowed
       toast.add({ severity: 'error', summary: 'Error', detail: 'The selected file type isn’t allowed in this folder.', life: 3000 })
