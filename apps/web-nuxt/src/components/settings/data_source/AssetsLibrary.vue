@@ -25,15 +25,16 @@ const hostUrl = 'https://node-js-fsp.onrender.com/'
 const ajaxSettings = {
   url: hostUrl,
   uploadUrl: `${hostUrl}Upload`,
+  downloadUrl: `${hostUrl}Download`,
 }
 const uploadSettings = {
   autoUpload: true,
   autoClose: true,
 }
+
 // Toolbar settings including an upload button
-const toolbarSettings = {
+const toolbarSettings = ref({
   items: [
-    'Upload',
     'Cut',
     'Copy',
     'Paste',
@@ -41,16 +42,22 @@ const toolbarSettings = {
     'Rename',
     'SortBy',
     'Refresh',
-    'Selection',
+    'Upload',
     'View',
     'Details',
   ],
   visible: true,
-}
+})
+
+const toolbarKey = ref(0)
+
+watch(toolbarSettings, () => {
+  toolbarKey.value += 1
+})
 
 // Restrict context menu options
-const contextMenuSettings = {
-  file: ['Cut', 'Copy', '|', 'Delete', 'Rename', '|', 'Details'],
+const contextMenuSettings = ref({
+  file: ['Cut', 'Copy', '|', 'Delete', 'Rename', '|', 'Download', '|', 'Details'],
   folder: [
     'Open',
     '|',
@@ -77,7 +84,7 @@ const contextMenuSettings = {
     'SelectAll',
   ],
   visible: true,
-}
+})
 
 // Navigation pane settings
 const navigationPaneSettings = {
@@ -95,12 +102,62 @@ const folderPermissions = {
 
 // use the beforeSend event to check if the file is allowed to be uploaded to the specified folder
 function beforeSend(args) {
-  if (args.action === 'Upload') {
-    // get the path from args.ajaxSettings.data by Json parsing
+  if (args.action === 'read') {
     const json = JSON.parse(args.ajaxSettings.data)
-    const path = json[0].path
-    const fileExtension = json[3].filename.split('.').pop()
-    const folder = path.split('/').slice(-2)[0]
+    const folder = json.path.split('/').slice(-2)[0]
+    if (folder === 'Templates Library') {
+      toolbarSettings.value = {
+        ...toolbarSettings.value,
+        items: ['Cut', 'Copy', 'Paste', 'Delete', 'Rename', 'SortBy', 'Refresh', 'View', 'Details'],
+      }
+      contextMenuSettings.value = {
+        ...contextMenuSettings.value,
+        layout: ['SortBy', 'View', 'Refresh', '|', 'Paste', '|', 'Details', '|', 'SelectAll'],
+      }
+    }
+
+    else {
+    // // Restore default toolbar items if not in 'Templates Library'
+      toolbarSettings.value = {
+        ...toolbarSettings.value,
+        items: [
+          'Cut',
+          'Copy',
+          'Paste',
+          'Delete',
+          'Rename',
+          'SortBy',
+          'Refresh',
+          'Upload',
+          'View',
+          'Details',
+        ],
+      }
+      contextMenuSettings.value = {
+        ...contextMenuSettings.value,
+        layout: [
+          'SortBy',
+          'View',
+          'Refresh',
+          '|',
+          'Paste',
+          '|',
+          'NewFolder',
+          '|',
+          'Details',
+          '|',
+          'SelectAll',
+        ],
+      }
+    }
+  }
+
+  else if (args.action === 'Upload') {
+    const json = JSON.parse(args.ajaxSettings.data)
+    const path = json && json[0]?.path
+    const fileExtension = json && json[3]?.filename?.split('.')?.pop()
+    const folder = path && path.split('/').slice(-2)[0]
+    // get the path from args.ajaxSettings.data by Json parsing
     if (folder === 'Templates Library') {
       args.cancel = true
       toast.add({ severity: 'error', summary: 'Error', detail: 'You are not allowed to upload files to this folder.', life: 3000 })
@@ -116,37 +173,6 @@ function beforeSend(args) {
 provide('filemanager', [DetailsView, NavigationPane, Toolbar])
 </script>
 
-<!-- import stlyle from assets/css
-  -->
   <style>
 @import url('assets/css/SyncFusion-Filemanager-custom-style.css');
-.e-input-group:not(.e-float-icon-left):not(.e-float-input)::before,
-.e-input-group:not(.e-float-icon-left):not(.e-float-input)::after,
-.e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before,
-.e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after,
-.e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before,
-.e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after,
-.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before,
-.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after,
-.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::before,
-.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::after,
-.e-float-input.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::before,
-.e-float-input.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::after,
-.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::before,
-.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::after,
-.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::before,
-.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::after,
-.e-filled.e-input-group.e-float-icon-left:not(.e-float-input)::before,
-.e-filled.e-input-group.e-float-icon-left:not(.e-float-input)::after,
-.e-filled.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input)::before,
-.e-filled.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input)::after,
-.e-filled.e-float-input.e-input-group.e-float-icon-left .e-float-line::before,
-.e-filled.e-float-input.e-input-group.e-float-icon-left .e-float-line::after,
-.e-filled.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-float-line::before,
-.e-filled.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-float-line::after {
-  background-color: #009EE2;
-}
-.e-toolbar-items.e-tbar-pos {
-  margin-top: -20px;
-}
 </style>
