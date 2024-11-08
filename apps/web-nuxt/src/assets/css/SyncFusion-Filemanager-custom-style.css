@@ -2166,7 +2166,7 @@ $indigo-900: darken(shade-color($primary, 31%), 5%)!default;
 }
 
 .e-dropdownbase .e-list-item.e-active.e-hover {
-  color: #111827;
+  color: #11182
 }
 
 .e-input-group:not(.e-disabled) .e-control.e-dropdownlist ~ .e-ddl-icon:active,
@@ -2988,7 +2988,7 @@ label.e-float-text,
 .e-float-input.e-control-wrapper.e-input-focus input ~ label.e-float-text,
 .e-float-input.e-input-focus input ~ label.e-float-text {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -35px, 0) scale(1);
 }
@@ -3018,7 +3018,7 @@ label.e-float-text,
 .e-small .e-float-input.e-control-wrapper input[disabled] ~ label.e-label-top.e-float-text,
 .e-small .e-float-input.e-control-wrapper input label.e-float-text.e-label-top {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -34px, 0) scale(1);
 }
@@ -4158,7 +4158,7 @@ textarea.e-input.e-small.e-rtl,
 .e-float-input.e-control-wrapper textarea[disabled] ~ label.e-label-top.e-float-text,
 .e-float-input.e-control-wrapper textarea label.e-float-text.e-label-top {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -33px, 0) scale(1);
 }
@@ -4255,7 +4255,7 @@ textarea.e-input.e-small.e-rtl,
 .e-float-input.e-control-wrapper.e-autofill textarea:-webkit-autofill ~ label.e-float-text,
 .e-float-input.e-control-wrapper.e-autofill textarea:not(:focus):valid:-webkit-autofill ~ label.e-float-text.e-label-bottom {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -40px, 0) scale(1);
   user-select: text;
@@ -4295,7 +4295,7 @@ textarea.e-input.e-small.e-rtl,
 .e-small .e-float-input.e-control-wrapper textarea[readonly] ~ label.e-label-top.e-float-text,
 .e-small .e-float-input.e-control-wrapper textarea[disabled] ~ label.e-label-top.e-float-text,
 .e-small .e-float-input.e-control-wrapper textarea label.e-float-text.e-label-top {
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -31px, 0) scale(1);
 }
@@ -5291,7 +5291,7 @@ textarea.e-input.e-bigger.e-small,
 .e-float-input.e-control-wrapper.e-bigger.e-input-focus input ~ label.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper.e-input-focus input ~ label.e-float-text {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -34px, 0) scale(1);
 }
@@ -5324,7 +5324,7 @@ textarea.e-input.e-bigger.e-small,
 .e-bigger .e-float-input.e-input-focus input ~ label.e-float-text,
 .e-float-input.e-control-wrapper.e-bigger.e-input-focus input ~ label.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper.e-input-focus input ~ label.e-float-text {
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -37px, 0) scale(1);
 }
@@ -5371,7 +5371,7 @@ textarea.e-input.e-bigger.e-small,
 .e-float-input.e-control-wrapper.e-bigger.e-small.e-input-focus input ~ label.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper.e-small.e-input-focus input ~ label.e-float-text,
 .e-small .e-float-input.e-control-wrapper.e-bigger.e-input-focus input ~ label.e-float-text {
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -34px, 0) scale(1);
 }
@@ -6427,7 +6427,7 @@ textarea.e-input.e-bigger.e-small,
 .e-bigger .e-float-input.e-control-wrapper.e-autofill:not(.e-input-focus):not(.e-outline) input:not(:focus):valid:-webkit-autofill ~ label.e-float-text.e-label-bottom,
 .e-bigger.e-float-input.e-control-wrapper.e-autofill:not(.e-input-focus):not(.e-outline) input:not(:focus):valid:-webkit-autofill ~ label.e-float-text.e-label-bottom {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -40px, 0) scale(1);
   user-select: text;
@@ -6509,7 +6509,7 @@ textarea.e-input.e-bigger.e-small,
 .e-bigger .e-float-input.e-control-wrapper textarea[readonly] ~ label.e-label-top.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper textarea[disabled] ~ label.e-label-top.e-float-text,
 .e-bigger .e-float-input.e-control-wrapper textarea label.e-float-text.e-label-top {
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -35px, 0) scale(1);
 }
@@ -6538,7 +6538,7 @@ textarea.e-input.e-bigger.e-small,
 .e-small.e-bigger .e-float-input.e-control-wrapper textarea[readonly] ~ label.e-label-top.e-float-text,
 .e-small.e-bigger .e-float-input.e-control-wrapper textarea[disabled] ~ label.e-label-top.e-float-text,
 .e-small.e-bigger .e-float-input.e-control-wrapper textarea label.e-float-text.e-label-top {
-  font-weight: 500;
+  font-weight: 400;
   padding-right: 0;
   transform: translate3d(-10px, -33px, 0) scale(1);
 }
@@ -7042,7 +7042,7 @@ textarea.e-input.e-bigger.e-small,
 
 .e-dropdownbase .e-list-item.e-active,
 .e-dropdownbase .e-list-item.e-active.e-hover {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .e-dropdownbase .e-list-group-item,
@@ -7183,7 +7183,7 @@ textarea.e-input.e-bigger.e-small,
   vertical-align: middle;
   white-space: nowrap;
   width: 100%;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .e-rtl.e-multiselect-group .e-dropdownbase.e-dd-group .e-list-item {
@@ -7244,7 +7244,7 @@ textarea.e-input.e-bigger.e-small,
   color: #6b7280;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 30px;
   min-height: 30px;
   padding-left: 12px;
@@ -7302,7 +7302,7 @@ textarea.e-input.e-bigger.e-small,
   color: #6b7280;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   text-indent: 10px;
 }
 
@@ -7534,7 +7534,7 @@ textarea.e-input.e-bigger.e-small,
   display: inline-block;
   font-family: "Poppins";
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   justify-content: center;
   line-height: 1.429em;
   outline: none;
@@ -9059,7 +9059,7 @@ ejs-calendar {
   color: #374151;
   font-size: 13px;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
 }
 .e-calendar .e-content td.e-overlay {
   background: none;
@@ -9107,7 +9107,7 @@ ejs-calendar {
   display: inline-block;
   float: left;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   padding: 0 5px;
   border: none;
@@ -9171,7 +9171,7 @@ ejs-calendar {
   padding: 8px 12px 6px 16px;
 }
 .e-calendar th {
-  font-weight: 500;
+  font-weight: 400;
   height: 30px;
   text-transform: uppercase;
 }
@@ -9969,7 +9969,7 @@ ejs-calendar {
   color: #374151;
   font-size: 13px;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 400;
 }
 .e-bigger.e-small .e-calendar .e-content td.e-overlay {
   background: none;
@@ -10017,7 +10017,7 @@ ejs-calendar {
   display: inline-block;
   float: left;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   text-align: left;
   padding: 0 5px;
   border: none;
@@ -10081,7 +10081,7 @@ ejs-calendar {
   padding: 8px 12px 6px 16px;
 }
 .e-bigger.e-small .e-calendar th {
-  font-weight: 500;
+  font-weight: 400;
   height: 30px;
   text-transform: uppercase;
 }
@@ -11085,7 +11085,7 @@ ejs-calendar {
   width: 100%;
   word-break: break-word;
   z-index: 1;
-  font-weight: 500;
+  font-weight: 400;
 }
 .e-tooltip-wrap.e-rtl .e-tooltip-close::before {
   font-size: 8px;
@@ -11620,13 +11620,13 @@ ejs-calendar {
 }
 .e-datepicker .e-model-header .e-model-year {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 32px;
   margin: 0;
 }
 .e-datepicker .e-model-month, .e-datepicker .e-model-day {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 32px;
   margin: 0;
 }
@@ -12546,7 +12546,7 @@ ejs-calendar {
 .e-listview .e-list-header {
   align-items: center;
   display: flex;
-  font-weight: 500;
+  font-weight: 400;
   height: 30px;
   padding: 6px 12px;
 }
@@ -12579,9 +12579,8 @@ ejs-calendar {
   border-top: 0 solid;
   height: 30px;
   line-height: 18px;
-  font-weight: 600;
   box-sizing: border-box;
-  font-weight: 500;
+  font-weight: 400;
   padding: 6px 12px;
 }
 .e-listview .e-list-group-item .e-list-text {
@@ -12930,7 +12929,7 @@ ejs-calendar {
 .e-listview.e-bigger .e-list-header {
   align-items: center;
   display: flex;
-  font-weight: 500;
+  font-weight: 400;
   height: 38px;
   font-size: 13px;
   line-height: 21px;
@@ -14336,7 +14335,7 @@ ejs-calendar {
 .e-dialog .e-dlg-header {
   display: block;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
   user-select: none;
@@ -14707,7 +14706,7 @@ ejs-calendar {
 .e-dlg-header * {
   color: #111827;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .e-dlg-content {
@@ -16468,7 +16467,7 @@ ejs-calendar {
   touch-action: none;
 }
 .e-treeview .e-list-item.e-active {
-  font-weight: 600;
+  font-weight: 400;
 }
 .e-treeview .e-list-item div.e-icons.interaction {
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
@@ -16817,11 +16816,10 @@ ejs-calendar {
   font-size: 20px;
 }
 .e-treeview .e-list-item.e-hover, .e-treeview .e-list-item.e-node-focus {
-  background: transparent;
+  background: #f3f4f6;
 }
 .e-treeview .e-list-item.e-hover > .e-fullrow, .e-treeview .e-list-item.e-node-focus > .e-fullrow {
-  background-color: #f3f4f6;
-  border-color: #f3f4f6;
+  background-color: transparent;
 }
 .e-treeview .e-list-item.e-hover > .e-text-content, .e-treeview .e-list-item.e-node-focus > .e-text-content {
   color: #111827;
@@ -16838,8 +16836,6 @@ ejs-calendar {
   background: transparent;
 }
 .e-treeview .e-list-item.e-active > .e-fullrow {
-  background-color: #e5e7eb;
-  border-color: #e5e7eb;
 }
 .e-treeview .e-list-item.e-active.e-animation-active > .e-fullrow {
   background-color: transparent;
@@ -16861,16 +16857,16 @@ ejs-calendar {
 .e-treeview .e-list-item.e-active > .e-text-content .e-icon-expandable {
   color: #111827;
 }
-.e-treeview .e-list-item.e-active.e-hover > .e-fullrow, .e-treeview .e-list-item.e-active.e-node-focus > .e-fullrow {
+/* .e-treeview .e-list-item.e-active.e-hover > .e-fullrow, .e-treeview .e-list-item.e-active.e-node-focus > .e-fullrow {
   background-color: #d6d9e0;
   border-color: #f3f4f6;
-}
-.e-treeview .e-list-item.e-active.e-hover > .e-text-content, .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content {
+} */
+/* .e-treeview .e-list-item.e-active.e-hover > .e-text-content, .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content {
   color: #111827;
-}
-.e-treeview .e-list-item.e-active.e-hover > .e-text-content .e-list-text, .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content .e-list-text {
+} */
+/* .e-treeview .e-list-item.e-active.e-hover > .e-text-content .e-list-text, .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content .e-list-text {
   color: #111827;
-}
+} */
 .e-treeview .e-list-item.e-active.e-hover > .e-text-content .e-icon-collapsible,
 .e-treeview .e-list-item.e-active.e-hover > .e-text-content .e-icon-expandable, .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content .e-icon-collapsible,
 .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content .e-icon-expandable {
@@ -16919,18 +16915,18 @@ ejs-calendar {
 .e-treeview .e-popup .e-downtail::after {
   border-top-color: #f3f4f6;
 }
-.e-treeview:not(.e-fullrow-wrap) .e-list-item.e-hover > .e-text-content, .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-node-focus > .e-text-content {
+/* .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-hover > .e-text-content, .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-node-focus > .e-text-content {
   background-color: #f3f4f6;
   border-color: #f3f4f6;
-}
+} */
 .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-active > .e-text-content {
   background-color: #e5e7eb;
   border-color: #e5e7eb;
 }
-.e-treeview:not(.e-fullrow-wrap) .e-list-item.e-active.e-hover > .e-text-content, .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-active.e-node-focus > .e-text-content {
+/* .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-active.e-hover > .e-text-content, .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-active.e-node-focus > .e-text-content {
   background-color: #d6d9e0;
   border-color: #f3f4f6;
-}
+} */
 .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-editing.e-active > .e-text-content, .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-editing.e-hover > .e-text-content, .e-treeview:not(.e-fullrow-wrap) .e-list-item.e-editing.e-node-focus > .e-text-content {
   background-color: transparent;
   border-color: transparent;
@@ -17319,7 +17315,7 @@ ejs-calendar {
 .e-pager .e-currentitem {
   font-style: normal;
   font-variant: normal;
-  font-weight: 500;
+  font-weight: 400;
 }
 .e-pager div,
 .e-pager a {
@@ -19713,7 +19709,7 @@ li.e-separator.e-menu-item.e-excel-separator {
   border: 0 none;
   display: block;
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 400;
   height: 16px;
   line-height: 16px;
   padding: 0 1.6em 0 0.4em;
@@ -19799,7 +19795,7 @@ li.e-separator.e-menu-item.e-excel-separator {
   border-style: solid;
   border-width: 0;
   font-size: 10px;
-  font-weight: 500;
+  font-weight: 400;
   height: 32px;
   overflow: hidden;
   padding: 8px 8px 8px;
@@ -19875,7 +19871,7 @@ li.e-separator.e-menu-item.e-excel-separator {
   border-style: solid;
   border-width: 1px 0 0;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   height: auto;
   line-height: 18px;
   padding: 6px 8px;
@@ -23327,7 +23323,7 @@ li.e-separator.e-menu-item.e-excel-separator {
 .e-bigger.e-grid.e-row-responsive .e-gridcontent td::before,
 .e-bigger.e-grid.e-row-responsive .e-summarycontent td::before {
   content: attr(data-cell);
-  font-weight: 500;
+  font-weight: 400;
   left: 13px;
   padding-right: 10px;
   position: absolute;
@@ -23597,7 +23593,7 @@ li.e-separator.e-menu-item.e-excel-separator {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: 500;
+  font-weight: 400;
 }
 .e-bigger .e-responsive-dialog .e-dlg-header-content .e-dlg-header .e-res-custom-element .e-res-filter-clear-btn,
 .e-bigger.e-responsive-dialog .e-dlg-header-content .e-dlg-header .e-res-custom-element .e-res-filter-clear-btn {
@@ -23613,14 +23609,14 @@ li.e-separator.e-menu-item.e-excel-separator {
 .e-bigger.e-responsive-dialog .e-dlg-header-content .e-dlg-header .e-res-custom-element .e-res-sort-clear-btn {
   color: #009EE2;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   padding-top: 5px;
   margin-top: -7px;
 }
 .e-bigger .e-responsive-dialog .e-dlg-header-content .e-dlg-header .e-res-custom-element .e-res-apply-btn,
 .e-bigger.e-responsive-dialog .e-dlg-header-content .e-dlg-header .e-res-custom-element .e-res-apply-btn {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 400;
   padding: 0;
   padding-left: 20px;
   padding-right: 0;
@@ -24061,7 +24057,7 @@ ejs-filemanager {
   cursor: pointer;
   font-size: 13px;
   line-height: 18px;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
 }
 .e-filemanager .e-address .e-list-text:hover {
@@ -24622,9 +24618,9 @@ ejs-filemanager {
   background: #fff;
   border-color: #e5e7eb;
 }
-.e-filemanager .e-treeview .e-list-item.e-active > .e-fullrow {
-  border: #e5e7eb;
-}
+/* .e-filemanager .e-treeview .e-list-item.e-active > .e-fullrow {
+  border: #e5e7e
+} */
 .e-filemanager .e-treeview .e-list-parent .e-list-item.e-fe-drop-folder.e-hover > .e-fullrow {
   border-color: #009EE2;
 }
@@ -25495,4 +25491,41 @@ ejs-filemanager {
     min-width: 140px;
     width: calc(33.33% - 17px);
   }
+}
+
+.e-input-group:not(.e-float-icon-left):not(.e-float-input)::before,
+.e-input-group:not(.e-float-icon-left):not(.e-float-input)::after,
+.e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before,
+.e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after,
+.e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before,
+.e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after,
+.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before,
+.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after,
+.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::before,
+.e-float-input.e-input-group:not(.e-float-icon-left) .e-float-line::after,
+.e-float-input.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::before,
+.e-float-input.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::after,
+.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::before,
+.e-float-input.e-control-wrapper.e-input-group:not(.e-float-icon-left) .e-float-line::after,
+.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::before,
+.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-input-in-wrap .e-float-line::after,
+.e-filled.e-input-group.e-float-icon-left:not(.e-float-input)::before,
+.e-filled.e-input-group.e-float-icon-left:not(.e-float-input)::after,
+.e-filled.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input)::before,
+.e-filled.e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input)::after,
+.e-filled.e-float-input.e-input-group.e-float-icon-left .e-float-line::before,
+.e-filled.e-float-input.e-input-group.e-float-icon-left .e-float-line::after,
+.e-filled.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-float-line::before,
+.e-filled.e-float-input.e-control-wrapper.e-input-group.e-float-icon-left .e-float-line::after {
+  background-color: #009EE2;
+}
+.e-toolbar-items.e-tbar-pos {
+  margin-top: -20px;
+}
+.e-treeview .e-list-item.e-active > .e-text-content .e-list-text {
+    color: #009EE2;
+}
+.e-treeview .e-list-item.e-active > .e-text-content {
+    color: #009EE2;
+    background-color: #f5f5f5;
 }
