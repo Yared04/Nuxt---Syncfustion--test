@@ -1,6 +1,13 @@
 <template>
   <div class="h-[62px] flex items-center justify-between px-3 z-10 mb-3 rounded-md bg-primary-50 ">
     <div class="flex justify-content-center gap-6 ml-2">
+      <div>
+        <font-awesome-icon :icon="['far', 'ticket']" />
+        <font-awesome-icon :icon="['fal', 'ticket']" />
+        <font-awesome-icon :icon="['fat', 'ticket']" />
+        <font-awesome-icon :icon="['fas', 'ticket']" />
+        <font-awesome-icon :icon="['fasl', 'tickets-simple']" />
+      </div>
       <div v-tooltip.top="$t('Cp_templateEditor_topbar.advanced_pointer')">
         <div v-if="!templateEditorStore.activeAdvancedPointer" class="cursor-pointer text-surface-600" @click="templateEditorStore.activeAdvancedPointer = true">
           <font-awesome-icon icon="fa-thin fa-arrow-pointer" size="xl" />
