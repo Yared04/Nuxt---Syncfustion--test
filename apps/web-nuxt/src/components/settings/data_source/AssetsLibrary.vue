@@ -1,4 +1,4 @@
-<template>
+<template class="text-blue-400">
   <EjsFilemanager
     id="file-manager"
     :context-menu-settings="contextMenuSettings"
@@ -6,7 +6,10 @@
     :navigation-pane-settings="navigationPaneSettings"
     :upload-settings="uploadSettings"
     :ajax-settings="ajaxSettings"
+    root-alias-name="Images"
+    selected-items="Images"
     @before-send="beforeSend"
+    @popup-open="onPopupOpen"
   >
     />
   </ejsfilemanager>
@@ -168,6 +171,31 @@ function beforeSend(args) {
       toast.add({ severity: 'error', summary: 'Error', detail: 'The selected file type isn’t allowed in this folder.', life: 3000 })
     }
   }
+}
+
+function outsideClickHandler(event, args) {
+  if (
+    args.popupModule
+    && args.popupModule.element
+    && !args.popupModule.element.contains(event.target)
+  ) {
+    // Close the popup using hide()
+    args.popupModule.hide()
+
+    // Remove the event listener once the popup is closed
+    document.removeEventListener('mousedown', e => outsideClickHandler(e, args))
+  }
+}
+
+function onPopupOpen(args) {
+  // Check if popupModule and element exist before proceeding
+  if (!args.popupModule || !args.popupModule.element) {
+    console.warn('Popup module or element is not available.')
+    return
+  }
+
+  // Add the event listener when the popup opens
+  document.addEventListener('mousedown', e => outsideClickHandler(e, args))
 }
 
 provide('filemanager', [DetailsView, NavigationPane, Toolbar])
