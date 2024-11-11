@@ -2166,7 +2166,7 @@ $indigo-900: darken(shade-color($primary, 31%), 5%)!default;
 }
 
 .e-dropdownbase .e-list-item.e-active.e-hover {
-  color: #11182
+  color: #111827;
 }
 
 .e-input-group:not(.e-disabled) .e-control.e-dropdownlist ~ .e-ddl-icon:active,
