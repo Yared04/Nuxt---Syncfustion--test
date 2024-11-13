@@ -164,9 +164,6 @@ function beforeSend(args) {
     const fileExtension = json && json[3]?.filename?.split('.')?.pop()
     const folder = path && path.split('/').slice(-2)[0]
     // get the path from args.ajaxSettings.data by Json parsing
-    const path = json[0].path
-    const fileExtension = json[3].filename.split('.').pop()
-    const folder = path.split('/').slice(-2)[0]
     if (folder === 'Templates Library') {
       args.cancel = true
     }
