@@ -16857,10 +16857,9 @@ ejs-calendar {
 .e-treeview .e-list-item.e-active > .e-text-content .e-icon-expandable {
   color: #111827;
 }
-/* .e-treeview .e-list-item.e-active.e-hover > .e-fullrow, .e-treeview .e-list-item.e-active.e-node-focus > .e-fullrow {
-  background-color: #d6d9e0;
-  border-color: #ffffff;
-} */
+.e-treeview .e-list-item.e-active.e-hover > .e-fullrow, .e-treeview .e-list-item.e-active.e-node-focus > .e-fullrow {
+  background-color: #f9fafb;
+}
 /* .e-treeview .e-list-item.e-active.e-hover > .e-text-content, .e-treeview .e-list-item.e-active.e-node-focus > .e-text-content {
   color: #111827;
 } */
@@ -25552,6 +25551,7 @@ ejs-filemanager {
 .e-treeview .e-list-item.e-active > .e-text-content, .e-treeview .e-list-item.e-active > .e-fullrow {
     color: #009EE2;
     background-color: #f9fafb;
+    border: none;
 }
 
 .e-treeview .e-list-item.e-hover > .e-fullrow {
