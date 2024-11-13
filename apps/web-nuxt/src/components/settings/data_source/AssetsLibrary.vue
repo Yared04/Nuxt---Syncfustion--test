@@ -25,7 +25,6 @@ import {
   NavigationPane,
   Toolbar,
 } from '@syncfusion/ej2-vue-filemanager'
-import message from '~/presets/lara/message'
 
 const toast = useToast()
 const hostUrl = 'https://node-js-fsp.onrender.com/'
