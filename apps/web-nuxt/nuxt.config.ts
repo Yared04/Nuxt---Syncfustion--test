@@ -99,7 +99,7 @@ export default defineNuxtConfig({
   css: [
     '@fortawesome/fontawesome-svg-core/styles.css',
     '~/assets/scss/main.scss',
-    '~/assets/scss/syncfusion-tailwind.scss',
+    '~/assets/scss/tailwind.scss',
 
   ],
   runtimeConfig: {
