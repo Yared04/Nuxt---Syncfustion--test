@@ -33,9 +33,7 @@ export default defineNuxtConfig({
       cors: { origin: '*' },
     },
   },
-  build: {
-    transpile: [/syncfusion\/ej2-vue-filemanager/],
-  },
+
   devServer: {
     port: 3001,
 

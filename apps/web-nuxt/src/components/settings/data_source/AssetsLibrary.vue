@@ -1,21 +1,23 @@
 <template class="text-blue-400">
-  <EjsFilemanager
-    id="file-manager"
-    :context-menu-settings="contextMenuSettings"
-    :toolbar-settings="toolbarSettings"
-    :navigation-pane-settings="navigationPaneSettings"
-    :upload-settings="uploadSettings"
-    :ajax-settings="ajaxSettings"
-    :show-item-check-boxes="false"
-    path="/Assets Library"
-    root-alias-name="Images"
-    @before-send="beforeSend"
-    @popup-open="onPopupOpen"
-    @before-popup-open="beforePopupOpen"
-    @file-open="fileOpen"
-  >
-    />
-  </ejsfilemanager>
+  <ClientOnly>
+    <EjsFilemanager
+      id="file-manager"
+      :context-menu-settings="contextMenuSettings"
+      :toolbar-settings="toolbarSettings"
+      :navigation-pane-settings="navigationPaneSettings"
+      :upload-settings="uploadSettings"
+      :ajax-settings="ajaxSettings"
+      :show-item-check-boxes="false"
+      path="/Assets Library"
+      root-alias-name="Images"
+      @before-send="beforeSend"
+      @popup-open="onPopupOpen"
+      @before-popup-open="beforePopupOpen"
+      @file-open="fileOpen"
+    >
+      />
+    </ejsfilemanager>
+  </ClientOnly>
 </template>
 
 <script setup>
