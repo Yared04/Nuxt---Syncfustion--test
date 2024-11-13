@@ -33,7 +33,6 @@ export default defineNuxtConfig({
       cors: { origin: '*' },
     },
   },
-
   devServer: {
     port: 3001,
 
@@ -88,7 +87,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/fontawesome.js',
     '~/plugins/vue-recaptcha.js',
-    '~/plugins/syncFusion.js',
+    { src: '~/plugins/syncFusion.js', mode: 'client' },
   ],
   app: {
     layoutTransition: {
