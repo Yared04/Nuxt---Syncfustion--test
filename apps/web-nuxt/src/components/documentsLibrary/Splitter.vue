@@ -30,7 +30,7 @@ function toggleRightPane() {
 }
 </script>
 
-<style scoped>
+<style>
 .e-splitter.e-splitter-horizontal .e-pane, .e-splitter.e-splitter-vertical .e-pane {
   border-radius: 20px;
   padding: 10px;
