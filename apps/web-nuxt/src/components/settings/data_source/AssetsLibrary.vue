@@ -1,6 +1,6 @@
 <template class="text-blue-400">
   <ClientOnly>
-    <EjsFilemanager
+    <ejs-filemanager
       id="file-manager"
       :context-menu-settings="contextMenuSettings"
       :toolbar-settings="toolbarSettings"
@@ -16,18 +16,11 @@
       @file-open="fileOpen"
     >
       />
-    </ejsfilemanager>
+    </ejs-filemanager>
   </ClientOnly>
 </template>
 
 <script setup>
-import {
-  DetailsView,
-  FileManagerComponent as EjsFilemanager,
-  NavigationPane,
-  Toolbar,
-} from '@syncfusion/ej2-vue-filemanager'
-
 const toast = useToast()
 const hostUrl = 'https://node-js-fsp.onrender.com/'
 const ajaxSettings = {
@@ -274,8 +267,6 @@ function updateDropZoneMessage(folderName) {
   // Append the message container to the drop zone
   dropZone.appendChild(messageContainer)
 }
-
-provide('filemanager', [DetailsView, NavigationPane, Toolbar])
 </script>
 
 <style>
