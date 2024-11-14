@@ -102,19 +102,20 @@ const navigationPaneSettings = {
 }
 
 let currentFolder = ref('')
+let fileExtension = ref('')
 
 // create a folder list with allowed permissions
 const folderPermissions = {
   'My Images': ['jpg', 'jpeg', 'png', 'svg'],
   'Organization Assets': ['pdf', 'docx', 'xlsx'],
+  'Templates Library': null,
 }
 
 // use the beforeSend event to check if the file is allowed to be uploaded to the specified folder
 function beforeSend(args) {
   if (args.action === 'read') {
-    const json = JSON.parse(args.ajaxSettings.data)
-    const folder = json.path.split('/').slice(-2)[0]
-    if (folder === 'Templates Library') {
+    const folder = currentFolder
+    if (folderPermissions[folder] === null) {
       toolbarSettings.value = {
         ...toolbarSettings.value,
         items: ['Cut', 'Copy', 'Paste', 'Delete', 'Rename', 'SortBy', 'Refresh', 'View', 'Details'],
@@ -162,18 +163,13 @@ function beforeSend(args) {
   }
   else if (args.action === 'Upload') {
     const json = JSON.parse(args.ajaxSettings.data)
-    const path = json && json[0]?.path
-    const fileExtension = json && json[3]?.filename?.split('.')?.pop()
-    const folder = path && path.split('/').slice(-2)[0]
-    // get the path from args.ajaxSettings.data by Json parsing
-    if (folder === 'Templates Library') {
+    fileExtension = json && json[3]?.filename?.split('.')?.pop()
+    const folder = currentFolder
+    if (folderPermissions[folder] === null)
       args.cancel = true
-    }
-    else if (folderPermissions[folder] && !folderPermissions[folder].includes(fileExtension)) {
+
+    else if (folderPermissions[folder] && !folderPermissions[folder].includes(fileExtension))
       args.cancel = true
-      // show a message if the file is not allowed
-      toast.add({ severity: 'error', summary: 'Error', detail: 'The selected file type isn’t allowed in this folder.', life: 3000 })
-    }
   }
 }
 
@@ -210,10 +206,15 @@ function fileOpen(args) {
 }
 
 function beforePopupOpen(args) {
-  if (args.popupName === 'Upload' && currentFolder === 'Templates Library') {
-    // disableDropZone()
-    args.cancel = true
-    toast.add({ severity: 'error', summary: 'Error', detail: 'You are not allowed to upload files to this folder.', life: 3000 })
+  if (args.popupName === 'Upload') {
+    if (folderPermissions[currentFolder] === null) {
+      args.cancel = true
+      toast.add({ severity: 'error', summary: 'Error', detail: 'You are not allowed to upload files to this folder.', life: 3000 })
+    }
+    else if (folderPermissions[currentFolder] && !folderPermissions[currentFolder].includes(fileExtension)) {
+      args.cancel = true
+      toast.add({ severity: 'error', summary: 'Error', styleClass: 'custom-toast', detail: `Invalid file format: please upload ${folderPermissions[currentFolder]}. \n\n Maximum size 3MB.`, life: 3000 })
+    }
   }
 }
 
@@ -278,6 +279,9 @@ provide('filemanager', [DetailsView, NavigationPane, Toolbar])
 </script>
 
 <style>
+.p-toast .custom-toast .p-toast-detail {
+  white-space: pre-line;
+}
 /* Upload dropzone styles */
 .e-filemanager .e-fe-overlay{
   background-color: rgba(249, 250, 251, 0.6);
