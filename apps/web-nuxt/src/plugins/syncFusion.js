@@ -1,37 +1,20 @@
-// // plugins/syncfusion.js
-// import Vue from 'vue'
-// import {
-//   BookmarkDialog,
-//   BordersAndShadingDialog,
-//   BulletsAndNumberingDialog,
-//   CellOptionsDialog,
-//   ContextMenu,
-//   DocumentEditorPlugin,
-//   Editor,
-//   EditorHistory,
-//   FontDialog,
-//   HyperlinkDialog,
-//   ImageResizer,
-//   ListDialog,
-//   OptionsPane,
-//   PageSetupDialog,
-//   ParagraphDialog,
-//   Print,
-//   Search,
-//   Selection,
-//   SfdtExport,
-//   StyleDialog,
-//   StylesDialog,
-//   TableDialog,
-//   TableOfContentsDialog,
-//   TableOptionsDialog,
-//   TablePropertiesDialog,
-//   TextExport,
-//   WordExport,
-// } from '@syncfusion/ej2-vue-documenteditor'
 import { registerLicense } from '@syncfusion/ej2-base'
 
-// // Register your Syncfusion license key
-registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5DQmFIYVF2R2dJfFRxcV9HZkwxOX1dQl9nSH5RdERlWHhbdXdVQmk=')
+import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
+import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
+import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerComponent, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
+import { defineNuxtPlugin } from '#app'
 
-// Vue.use(DocumentEditorPlugin)
+// plugins/syncfusion.js
+
+export default defineNuxtPlugin((nuxtApp) => {
+  // Register your Syncfusion license key
+  registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5DQmFIYVF2R2dJfFRxcV9HZkwxOX1dQl9nSH5RdERlWHhbdXdVQmk=')
+  nuxtApp.vueApp.component('EjsSplitter', SplitterComponent)
+  nuxtApp.vueApp.component('EPane', PaneDirective)
+  nuxtApp.vueApp.component('EPanes', PanesDirective)
+  nuxtApp.vueApp.use(TreeViewPlugin)
+  nuxtApp.vueApp.component('EjsPdfviewer', PdfViewerComponent)
+
+  PdfViewer.Inject(Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormDesigner, FormFields)
+})
