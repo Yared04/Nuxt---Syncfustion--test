@@ -8,12 +8,21 @@ import {
 } from '@syncfusion/ej2-vue-filemanager'
 import { defineNuxtPlugin } from '#app'
 
+import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
+import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
+import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerComponent, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
+import { defineNuxtPlugin } from '#app'
+
 // plugins/syncfusion.js
 
 export default defineNuxtPlugin((nuxtApp) => {
   // Register your Syncfusion license key
   registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5DQmFIYVF2R2dJfFRxcV9HZkwxOX1dQl9nSH5RdERlWHhbdXdVQmk=')
+  nuxtApp.vueApp.component('EjsSplitter', SplitterComponent)
+  nuxtApp.vueApp.component('EPane', PaneDirective)
+  nuxtApp.vueApp.component('EPanes', PanesDirective)
+  nuxtApp.vueApp.use(TreeViewPlugin)
+  nuxtApp.vueApp.component('EjsPdfviewer', PdfViewerComponent)
 
-  nuxtApp.vueApp.use(FileManagerPlugin)
-  FileManager.Inject(DetailsView, NavigationPane, Toolbar)
+  PdfViewer.Inject(Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormDesigner, FormFields)
 })

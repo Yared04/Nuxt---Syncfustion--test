@@ -1,11 +1,11 @@
 <template class="relative">
-  <EjsSplitter id="default-splitter" class="m-10 mr-12 mt-20" height="600px">
-    <EPanes>
-      <e-pane content="Left Pane" />
-      <e-pane v-if="showMiddlePane" content="Middle Pane" />
+  <ejs-splitter id="default-splitter" class="m-10 mr-12 mt-20" height="600px">
+    <e-panes>
+      <e-pane :content="leftPaneContent" />
+      <e-pane v-if="showMiddlePane" :content="middlePaneContent" />
       <e-pane v-if="showRightPane" content="Right Pane" />
-    </EPanes>
-  </EjsSplitter>
+    </e-panes>
+  </ejs-splitter>
   <div class="absolute mt-40 -right-5 flex flex-col space-y-20">
     <button class="bg-primaryBlue text-white px-3 py-2.5 rounded-lg rotate-90" @click="toggleMiddlePane">
       Preview
@@ -17,8 +17,22 @@
 </template>
 
 <script setup>
-import { PanesDirective as EPanes, SplitterComponent as EjsSplitter, PaneDirective as Epane } from '@syncfusion/ej2-vue-layouts'
+import { createApp } from 'vue'
+import LeftPane from './LeftPane.vue'
+import MiddlePane from './MiddlePane.vue'
 
+const pane1Content = createApp({}).component('LeftPane', LeftPane)
+const pane2Content = createApp({}).component('MiddlePane', MiddlePane)
+const leftPaneContent = function () {
+  return {
+    template: pane1Content,
+  }
+}
+const middlePaneContent = function () {
+  return {
+    template: pane2Content,
+  }
+}
 const showMiddlePane = ref(true)
 const showRightPane = ref(true)
 
