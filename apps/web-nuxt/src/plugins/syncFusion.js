@@ -3,8 +3,8 @@ import {
   DetailsView,
   FileManager,
   FileManagerPlugin,
-  NavigationPane,
   Toolbar as FileManagerToolbar,
+  NavigationPane,
 } from '@syncfusion/ej2-vue-filemanager'
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
 import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
