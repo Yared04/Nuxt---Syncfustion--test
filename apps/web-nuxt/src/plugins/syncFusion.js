@@ -2,7 +2,7 @@ import { registerLicense } from '@syncfusion/ej2-base'
 
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
 import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
-import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerComponent, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
+import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerPlugin, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
 import { defineNuxtPlugin } from '#app'
 
 // plugins/syncfusion.js
@@ -14,7 +14,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('EPane', PaneDirective)
   nuxtApp.vueApp.component('EPanes', PanesDirective)
   nuxtApp.vueApp.use(TreeViewPlugin)
-  nuxtApp.vueApp.component('EjsPdfviewer', PdfViewerComponent)
+  nuxtApp.vueApp.use(PdfViewerPlugin)
 
   PdfViewer.Inject(Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormDesigner, FormFields)
 })
