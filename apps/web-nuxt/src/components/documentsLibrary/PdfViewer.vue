@@ -2,13 +2,13 @@
   <ejs-pdfviewer
     ref="pdfViewer"
     :service-url="serviceUrl"
-    :document-path="documentPath"
-    :style="{ height: '800px', width: '1200px' }"
+    :style="{ height: '550px', width: '100%' }"
+    :document-path="selectedFile?.download_url"
   />
 </template>
 
 <script setup>
+const selectedFile = inject('selectedFile')
 const serviceUrl = 'https://services.syncfusion.com/vue/production/api/pdfviewer'
-const documentPath = 'https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf'
 const pdfViewer = null
 </script>

@@ -1,9 +1,9 @@
 <template class="relative">
   <ejs-splitter id="default-splitter" class="m-10 mr-12 mt-20" height="600px">
     <e-panes>
-      <e-pane :content="leftPaneContent" />
-      <e-pane v-if="showMiddlePane" :content="middlePaneContent" />
-      <e-pane v-if="showRightPane" content="Right Pane" />
+      <e-pane size="25%" :content="leftPaneContent" />
+      <e-pane v-if="showMiddlePane" size="50%" :content="middlePaneContent" />
+      <e-pane v-if="showRightPane" size="25%" :content="rightPaneContent" />
     </e-panes>
   </ejs-splitter>
   <div class="absolute mt-40 -right-5 flex flex-col space-y-20">
@@ -18,11 +18,20 @@
 
 <script setup>
 import { createApp } from 'vue'
-import LeftPane from './LeftPane.vue'
-import MiddlePane from './MiddlePane.vue'
+import Treeview from './Treeview.vue'
+import PdfViewer from './PdfViewer.vue'
+import RightPane from './RightPane.vue'
 
-const pane1Content = createApp({}).component('LeftPane', LeftPane)
-const pane2Content = createApp({}).component('MiddlePane', MiddlePane)
+const selectedFile = ref(null)
+function updateSelectedFile(file) {
+  selectedFile.value = file
+}
+provide('updateSelectedFile', updateSelectedFile)
+provide('selectedFile', selectedFile)
+
+const pane1Content = createApp({}).component('LeftPane', Treeview)
+const pane2Content = createApp({}).component('MiddlePane', PdfViewer)
+const pane3Content = createApp({}).component('RightPane', RightPane)
 const leftPaneContent = function () {
   return {
     template: pane1Content,
@@ -31,6 +40,11 @@ const leftPaneContent = function () {
 const middlePaneContent = function () {
   return {
     template: pane2Content,
+  }
+}
+const rightPaneContent = function () {
+  return {
+    template: pane3Content,
   }
 }
 const showMiddlePane = ref(true)
