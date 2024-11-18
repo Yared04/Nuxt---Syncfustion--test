@@ -6,6 +6,7 @@
         id="treeView"
         :key="JSON.stringify(files)"
         :fields="treeFields"
+        node-template="nodeTemplate"
         @node-selected="onNodeSelected"
       >
         <template #nodeTemplate="{ data }">
@@ -13,8 +14,15 @@
             v-if="data.children && data.children.length > 0"
             class="mr-2"
             :icon="['far', 'folder']"
+            :style="{ color: '#6b7280' }"
           />
-          <span>{{ data.text }}</span>
+          <font-awesome-icon
+            v-else
+            class="mr-2"
+            :icon="['far', 'file']"
+            :style="{ color: '#6b7280' }"
+          />
+          <span>{{ data.name }}</span>
         </template>
       </ejs-treeview>
     </div>
@@ -67,7 +75,7 @@ async function fetchFiles(path = 'Images', parentID = null) {
 }
 
 // Recursive function to fetch and process folder contents
-async function processFolders(data, parentID = null) {
+async function processFolders(data, _parentID = null) {
   for (const item of data) {
     if (item.isDirectory) {
       const subfolderFiles = await fetchFiles(item.path, item.id) // Fetch subfolder contents
@@ -96,5 +104,31 @@ function onNodeSelected(args) {
 </script>
 
   <style scoped>
-  /* Add your styles here */
-  </style>
+:deep(.e-treeview .e-list-item.e-active){
+  font-weight: 400;
+}
+/* Active State */
+:deep(.e-treeview .e-list-item.e-active > .e-text-content),
+:deep(.e-treeview .e-list-item.e-active > .e-fullrow) {
+    color: #009EE2 !important;
+    background-color: #f9fafb !important;
+    border-color: #f9fafb;
+}
+/* Hover State */
+:deep(.e-treeview .e-list-item.e-hover > .e-text-content),
+:deep(.e-treeview .e-list-item.e-hover > .e-fullrow) {
+    background-color: #f9fafb !important;
+    border-color: #f9fafb;
+}
+/* active and hover state */
+:deep(.e-treeview .e-list-item.e-active.e-hover > .e-fullrow),
+:deep(.e-treeview .e-list-item.e-active.e-hover > .e-text-content),
+:deep(.e-treeview .e-list-item.e-active.e-node-focus > .e-fullrow) {
+    background-color: #f9fafb !important;
+    color: #009EE2 !important;
+}
+:deep(.e-treeview .e-list-item.e-active > .e-text-content .e-list-text),
+:deep(.e-treeview .e-list-item.e-hover > .e-text-content .e-list-text) {
+    color: inherit !important;
+}
+</style>
