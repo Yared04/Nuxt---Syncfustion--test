@@ -339,15 +339,13 @@ function updateDropZoneMessage(folderName) {
 :deep(.e-treeview .e-list-item.e-active > .e-fullrow) {
     color: #009EE2 !important;
     background-color: #f9fafb !important;
-    border: none;
-}
+    border-color: #f9fafb;}
 
 /* Hover State */
 :deep(.e-treeview .e-list-item.e-hover > .e-text-content),
 :deep(.e-treeview .e-list-item.e-hover > .e-fullrow) {
     background-color: #f9fafb !important;
-    border: none;
-}
+    border-color: #f9fafb;}
 
 /* Active and Hover Combined State */
 :deep(.e-treeview .e-list-item.e-active.e-hover > .e-fullrow),
