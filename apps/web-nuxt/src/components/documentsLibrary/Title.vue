@@ -1,11 +1,31 @@
 <template>
-  <h1 class="text-lg mx-3 my-2">
-    {{ title }}
-  </h1>
+  <div class="flex justify-between mx-3 my-2">
+    <h1 class="text-lg">
+      {{ title }}
+    </h1>
+    <button @click="toggle">
+      <svg v-if="showCollapse" xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 28 28">
+        <path
+          fill="currentColor"
+          d="M17.72 11.53a.75.75 0 1 1 1.06-1.06l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72h-5.69a.75.75 0 0 1 0-1.5h5.69zM26 7.75A3.75 3.75 0 0 0 22.25 4H5.755a3.75 3.75 0 0 0-3.75 3.75v12.5A3.75 3.75 0 0 0 5.754 24H22.25A3.75 3.75 0 0 0 26 20.25zM22.25 5.5a2.25 2.25 0 0 1 2.25 2.25v12.5a2.25 2.25 0 0 1-2.25 2.25H11.006v-17zm-12.745 0v17H5.754a2.25 2.25 0 0 1-2.25-2.25V7.75a2.25 2.25 0 0 1 2.25-2.25z"
+        />
+      </svg>
+    </button>
+  </div>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   title: String,
+  showCollapse: Boolean,
 })
+const toggleRightPane = inject('toggleRightPane')
+const toggleMiddlePane = inject('toggleMiddlePane')
+
+function toggle() {
+  if (props.title === 'Preview')
+    toggleMiddlePane()
+  else if (props.title === 'Metadata')
+    toggleRightPane()
+}
 </script>
