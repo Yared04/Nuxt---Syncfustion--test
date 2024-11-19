@@ -39,18 +39,6 @@ provide('selectedFile', selectedFile)
 provide('toggleMiddlePane', toggleMiddlePane)
 provide('toggleRightPane', toggleRightPane)
 
-const pane1Content = createApp({}).component('LeftPane', LeftPane)
-const pane2Content = createApp({}).component('MiddlePane', MiddlePane)
-const leftPaneContent = function () {
-  return {
-    template: pane1Content,
-  }
-}
-const middlePaneContent = function () {
-  return {
-    template: pane2Content,
-  }
-}
 const showMiddlePane = ref(true)
 const showRightPane = ref(true)
 
