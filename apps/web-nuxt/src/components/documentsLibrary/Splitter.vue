@@ -1,23 +1,41 @@
-<template class="relative">
-  <EjsSplitter id="default-splitter" class="m-10 mr-12 mt-20" height="600px">
-    <EPanes>
-      <e-pane content="Left Pane" />
-      <e-pane v-if="showMiddlePane" content="Middle Pane" />
-      <e-pane v-if="showRightPane" content="Right Pane" />
-    </EPanes>
-  </EjsSplitter>
+<template class="relative doc-lib">
+  <ejs-splitter id="default-splitter" class="mx-12 my-10" height="600px">
+    <e-panes>
+      <e-pane content="#leftPaneContent" size="25%" min="15%" />
+      <e-pane v-if="showMiddlePane" size="50%" min="15%" content="#middlePaneContent" />
+      <e-pane v-if="showRightPane" size="25%" min="15%" content="#rightPaneContent" />
+    </e-panes>
+  </ejs-splitter>
   <div class="absolute mt-40 -right-5 flex flex-col space-y-20">
-    <button class="bg-primaryBlue text-white px-3 py-2.5 rounded-lg rotate-90" @click="toggleMiddlePane">
+    <button :class="showMiddlePane ? 'bg-blue-100' : 'bg-secondary '" class="px-3 py-2.5 rounded-lg rotate-90" @click="toggleMiddlePane">
       Preview
     </button>
-    <button class="bg-primaryBlue text-white px-3 py-2.5 rounded-lg rotate-90" @click="toggleRightPane">
+    <button :class="showRightPane ? 'bg-blue-100' : 'bg-secondary '" class="px-3 py-2.5 rounded-lg rotate-90" @click="toggleRightPane">
       Metadata
     </button>
+  </div>
+  <div id="leftPaneContent">
+    <Treeview />
+  </div>
+  <div id="middlePaneContent">
+    <PdfViewer />
+  </div>
+  <div id="rightPaneContent">
+    <RightPane />
   </div>
 </template>
 
 <script setup>
-import { PanesDirective as EPanes, SplitterComponent as EjsSplitter, PaneDirective as Epane } from '@syncfusion/ej2-vue-layouts'
+import Treeview from './Treeview.vue'
+import PdfViewer from './PdfViewer.vue'
+import RightPane from './RightPane.vue'
+
+const selectedFile = ref(null)
+function updateSelectedFile(file) {
+  selectedFile.value = file
+}
+provide('updateSelectedFile', updateSelectedFile)
+provide('selectedFile', selectedFile)
 
 const showMiddlePane = ref(true)
 const showRightPane = ref(true)
@@ -30,7 +48,36 @@ function toggleRightPane() {
 }
 </script>
 
-<style scoped>
+<style>
+.doc-lib :deep(.e-pane)::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+  border-radius: 8px; /* Add border radius */
+}
+
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-thumb {
+  background-color: #009EE2; /* Change scrollbar thumb color */
+  border-radius: 8px; /* Add border radius to thumb */
+}
+
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-track {
+  background-color: #f9fafb; /* Change scrollbar track color */
+}
+
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-button {
+  display: none; /* Remove up/down buttons */
+}
+
+/* Optional: Hover effect for thumb */
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-thumb:hover {
+  background-color: #0078A0; /* Darker color on hover */
+}
+.doc-lib :deep(.e-pane) {
+  scrollbar-color: #009EE2 #f9fafb; /* Thumb and track colors */
+  scrollbar-width: thin; /* Narrow scrollbar */
+}
+</style>
+
+<style>
 .e-splitter.e-splitter-horizontal .e-pane, .e-splitter.e-splitter-vertical .e-pane {
   border-radius: 20px;
   padding: 10px;
