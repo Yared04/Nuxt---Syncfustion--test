@@ -36,6 +36,8 @@ function updateSelectedFile(file) {
 }
 provide('updateSelectedFile', updateSelectedFile)
 provide('selectedFile', selectedFile)
+provide('toggleMiddlePane', toggleMiddlePane)
+provide('toggleRightPane', toggleRightPane)
 
 const showMiddlePane = ref(true)
 const showRightPane = ref(true)
