@@ -4,7 +4,7 @@ import {
   FileManager,
   FileManagerPlugin,
   NavigationPane,
-  Toolbar,
+  Toolbar as FileManagerToolbar,
 } from '@syncfusion/ej2-vue-filemanager'
 import { defineNuxtPlugin } from '#app'
 
@@ -25,6 +25,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(PdfViewerPlugin)
   nuxtApp.vueApp.use(FileManagerPlugin)
 
-  FileManager.Inject(DetailsView, NavigationPane, Toolbar)
+  FileManager.Inject(DetailsView, NavigationPane, FileManagerToolbar)
   PdfViewer.Inject(Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormDesigner, FormFields)
 })
