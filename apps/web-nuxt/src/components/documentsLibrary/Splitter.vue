@@ -47,58 +47,29 @@ function toggleRightPane() {
 }
 </script>
 
-<style>
-.doc-lib :deep(.e-pane)::-webkit-scrollbar {
-  width: 8px; /* Adjust scrollbar width */
-  border-radius: 8px; /* Add border radius */
-}
-
-.doc-lib :deep(.e-pane)::-webkit-scrollbar-thumb {
-  background-color: #009EE2; /* Change scrollbar thumb color */
-  border-radius: 8px; /* Add border radius to thumb */
-}
-
-.doc-lib :deep(.e-pane)::-webkit-scrollbar-track {
-  background-color: #f9fafb; /* Change scrollbar track color */
-}
-
-.doc-lib :deep(.e-pane)::-webkit-scrollbar-button {
-  display: none; /* Remove up/down buttons */
-}
-
-/* Optional: Hover effect for thumb */
-.doc-lib :deep(.e-pane)::-webkit-scrollbar-thumb:hover {
-  background-color: #0078A0; /* Darker color on hover */
-}
-.doc-lib :deep(.e-pane) {
-  scrollbar-color: #009EE2 #f9fafb; /* Thumb and track colors */
-  scrollbar-width: thin; /* Narrow scrollbar */
-}
-</style>
-
-<style>
-.e-splitter.e-splitter-horizontal .e-pane, .e-splitter.e-splitter-vertical .e-pane {
-  border-radius: 20px;
+<style scoped>
+.e-splitter.e-splitter-horizontal :deep(.e-pane), .e-splitter.e-splitter-vertical :deep(.e-pane) {
+  border-radius: 8px;
   padding: 10px;
   background-color: white;
   border: 1px solid #f0f1f2;
 }
-.e-splitter.e-splitter-horizontal, .e-splitter.e-splitter-vertical{
+:deep(.e-splitter.e-splitter-horizontal), .e-splitter.e-splitter-vertical{
     border: none;
 }
-.e-splitter .e-split-bar.e-split-bar-horizontal{
+.e-splitter :deep(.e-split-bar.e-split-bar-horizontal){
     background-color: #f9fafb;
     border: none;
 }
-.e-splitter .e-split-bar.e-split-bar-horizontal.e-split-bar-hover, .e-splitter .e-split-bar.e-split-bar-horizontal.e-split-bar-active{
+.e-splitter :deep(.e-split-bar.e-split-bar-horizontal.e-split-bar-hover), .e-splitter :deep(.e-split-bar.e-split-bar-horizontal.e-split-bar-active){
     background-color: #f9fafb;
     border: none;
 }
 
-.e-split-bar.e-split-bar-horizontal.e-resizable-split-bar{
+:deep(.e-split-bar.e-split-bar-horizontal.e-resizable-split-bar){
     width: 12px !important;
 }
-.e-splitter .e-split-bar.e-split-bar-horizontal .e-resize-handler{
+.e-splitter :deep(.e-split-bar.e-split-bar-horizontal .e-resize-handler){
     display: none;
 }
 .e-splitter .e-split-bar.e-split-bar-horizontal.e-split-bar-hover .e-resize-handler, .e-splitter .e-split-bar.e-split-bar-horizontal.e-split-bar-active .e-resize-handler{
