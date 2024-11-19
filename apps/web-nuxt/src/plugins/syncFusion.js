@@ -6,8 +6,6 @@ import {
   NavigationPane,
   Toolbar as FileManagerToolbar,
 } from '@syncfusion/ej2-vue-filemanager'
-import { defineNuxtPlugin } from '#app'
-
 import { PaneDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
 import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
 import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerPlugin, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
