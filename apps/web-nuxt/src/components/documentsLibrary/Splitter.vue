@@ -50,15 +50,23 @@ function toggleRightPane() {
 }
 </script>
 
+<style>
+.e-splitter.e-splitter-horizontal, .e-splitter.e-splitter-vertical{
+    border: none;
+}
+.e-navigation.e-pane.e-pane-horizontal.e-scrollable.e-static-pane.e-collapsed.e-pane-hidden,
+.e-layout-content.e-pane.e-pane-horizontal.e-scrollable.e-resizable.e-expanded{
+    border: none!important;
+    padding: 0!important;
+}
+</style>
+
 <style scoped>
 .e-splitter.e-splitter-horizontal :deep(.e-pane), .e-splitter.e-splitter-vertical :deep(.e-pane) {
   border-radius: 8px;
-  padding: 10px;
   background-color: white;
+  padding: 10px;
   border: 1px solid #f0f1f2;
-}
-:deep(.e-splitter.e-splitter-horizontal), .e-splitter.e-splitter-vertical{
-    border: none;
 }
 .e-splitter :deep(.e-split-bar.e-split-bar-horizontal){
     background-color: #f9fafb;
