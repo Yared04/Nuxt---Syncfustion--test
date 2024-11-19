@@ -1,6 +1,6 @@
 <template>
-  <section class="px-4">
-    <Title title="Metadata" />
+  <section class="">
+    <Title title="Metadata" :show-collapse="true" />
     <div v-if="selectedFile" class="">
       <div class="flex items-center mb-4 space-x-4">
         <!-- Icon -->
