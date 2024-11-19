@@ -1,26 +1,24 @@
 <template class="text-blue-400">
-  <ClientOnly>
-    <ejs-filemanager
-      id="file-manager"
-      :context-menu-settings="contextMenuSettings"
-      :toolbar-settings="toolbarSettings"
-      :navigation-pane-settings="navigationPaneSettings"
-      :upload-settings="uploadSettings"
-      :ajax-settings="ajaxSettings"
-      :show-item-check-boxes="false"
-      path="/Assets Library"
-      root-alias-name="Images"
-      @before-send="beforeSend"
-      @popup-open="onPopupOpen"
-      @before-popup-open="beforePopupOpen"
-      @file-open="fileOpen"
-    >
-      />
-    </ejs-filemanager>
-  </ClientOnly>
+  <ejs-filemanager
+    id="file-manager"
+    :context-menu-settings="contextMenuSettings"
+    :toolbar-settings="toolbarSettings"
+    :navigation-pane-settings="navigationPaneSettings"
+    :upload-settings="uploadSettings"
+    :ajax-settings="ajaxSettings"
+    :show-item-check-boxes="false"
+    path="/Assets Library"
+    root-alias-name="Images"
+    @before-send="beforeSend"
+    @popup-open="onPopupOpen"
+    @before-popup-open="beforePopupOpen"
+    @file-open="fileOpen"
+  />
 </template>
 
 <script setup>
+import { DetailsView, NavigationPane, Toolbar } from '@syncfusion/ej2-vue-filemanager'
+
 const toast = useToast()
 const hostUrl = 'https://node-js-fsp.onrender.com/'
 const ajaxSettings = {
@@ -253,7 +251,6 @@ function updateDropZoneMessage(folderName) {
     messageText.innerHTML = 'Uploading isn\'t allowed in this folder'
     messageText.style.color = 'red'
     icon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30" fill="#fa4441"><path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z"/></svg>'
-
   }
 
   // Create the file formats message
@@ -270,6 +267,8 @@ function updateDropZoneMessage(folderName) {
   // Append the message container to the drop zone
   dropZone.appendChild(messageContainer)
 }
+
+provide('filemanager', [DetailsView, NavigationPane, Toolbar])
 </script>
 
 <style>
@@ -333,9 +332,9 @@ function updateDropZoneMessage(folderName) {
   height: 100%;
 }
 
-:deep(.e-toolbar-items.e-tbar-pos) {
+/* :deep(.e-toolbar-items.e-tbar-pos) {
   margin-top: -17px;
-}
+} */
 
 /* General Active State */
 :deep(.e-treeview .e-list-item.e-active > .e-text-content),
