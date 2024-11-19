@@ -1,7 +1,7 @@
 <template>
   <section id="app">
     <Title title="Name" :show-collapse="false" />
-    <div class="control_wrapper">
+    <div>
       <!-- Conditionally render the tree view only when data is ready -->
       <ejs-treeview
         id="treeView"

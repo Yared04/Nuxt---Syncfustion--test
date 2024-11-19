@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-between mx-3 my-2">
+  <div class="flex justify-between mx-3 my-3">
     <h1 class="text-lg">
       {{ title }}
     </h1>
