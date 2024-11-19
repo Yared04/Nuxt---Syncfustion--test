@@ -34,7 +34,7 @@ let nodeId = 1
 async function fetchFiles(path = 'Images', parentID = null) {
   const apiUrl = `https://api.github.com/repos/Yared04/Node-js-FSP/contents/${path}`
   const headers = {
-    Authorization: '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',
+    Authorization: process.env.AUTHORIZATION_TOKEN,
   }
 
   try {
