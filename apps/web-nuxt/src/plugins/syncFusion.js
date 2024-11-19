@@ -23,6 +23,8 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('EPanes', PanesDirective)
   nuxtApp.vueApp.use(TreeViewPlugin)
   nuxtApp.vueApp.use(PdfViewerPlugin)
+  nuxtApp.vueApp.use(FileManagerPlugin)
 
+  FileManager.Inject(DetailsView, NavigationPane, Toolbar)
   PdfViewer.Inject(Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, FormDesigner, FormFields)
 })
