@@ -48,6 +48,35 @@ function toggleRightPane() {
 </script>
 
 <style>
+.doc-lib :deep(.e-pane)::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+  border-radius: 8px; /* Add border radius */
+}
+
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-thumb {
+  background-color: #009EE2; /* Change scrollbar thumb color */
+  border-radius: 8px; /* Add border radius to thumb */
+}
+
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-track {
+  background-color: #f9fafb; /* Change scrollbar track color */
+}
+
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-button {
+  display: none; /* Remove up/down buttons */
+}
+
+/* Optional: Hover effect for thumb */
+.doc-lib :deep(.e-pane)::-webkit-scrollbar-thumb:hover {
+  background-color: #0078A0; /* Darker color on hover */
+}
+.doc-lib :deep(.e-pane) {
+  scrollbar-color: #009EE2 #f9fafb; /* Thumb and track colors */
+  scrollbar-width: thin; /* Narrow scrollbar */
+}
+</style>
+
+<style>
 .e-splitter.e-splitter-horizontal .e-pane, .e-splitter.e-splitter-vertical .e-pane {
   border-radius: 20px;
   padding: 10px;

@@ -7,7 +7,6 @@
         id="treeView"
         :key="JSON.stringify(files)"
         :fields="treeFields"
-        node-template="nodeTemplate"
         @node-selected="onNodeSelected"
       />
     </div>
