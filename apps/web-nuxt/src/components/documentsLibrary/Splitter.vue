@@ -15,10 +15,10 @@
     </button>
   </div>
   <div id="leftPaneContent">
-    <Treeview />
+    <LeftPane />
   </div>
   <div id="middlePaneContent">
-    <PdfViewer />
+    <MiddlePane />
   </div>
   <div id="rightPaneContent">
     <RightPane />
@@ -26,8 +26,8 @@
 </template>
 
 <script setup>
-import Treeview from './Treeview.vue'
-import PdfViewer from './PdfViewer.vue'
+import LeftPane from './LeftPane.vue'
+import MiddlePane from './MiddlePane.vue'
 import RightPane from './RightPane.vue'
 
 const selectedFile = ref(null)
