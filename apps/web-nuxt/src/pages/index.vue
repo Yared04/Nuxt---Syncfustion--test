@@ -5,17 +5,7 @@
         {{ $t('welcome') }} {{ user?.name || user?.email }}
       </h1>
     </div>
-    <div class="card">
-      <!-- <div class="card-header">
-        <h2 class=" text-2xl font-semibold text-surface-600 -mb-10">
-          Favourite Templates
-        </h2>
-      </div> -->
-      <div class="card-content -mt-12">
-        <!-- <FavouriteTemplates :templates="templateData" /> -->
-        <TemplateDataView :templates="templateData" :is-favourite-view="true" @update-templates-for-favourites="updateTemplateData" />
-      </div>
-    </div>
+    <Dashboard />
   </div>
   <!-- <Toast position="top-right" group="bc" @close="onClose">
     <template #message="slotProps">
@@ -60,6 +50,7 @@ import { useAuth } from '@/composables/useAuth'
 
 // import FavouriteTemplates from '~/components/dashboard/FavouriteTemplates.vue'
 import TemplateDataView from '~/components/template/TemplateDataView.vue'
+import Dashboard from '~/components/dashboard/Dashboard.vue'
 
 import { resetAllTemplateCreationValues, templateDeliveryOptions, templateGeneralInformation } from '~/composables/useTemplateCreationData'
 import { resetAllTemplateEditorValues, templateEditorStore } from '@/composables/useTemplateEditorData'
