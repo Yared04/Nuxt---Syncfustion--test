@@ -30,9 +30,9 @@ const selectedFile = inject('selectedFile')
 const resourceUrl = 'https://cdn.syncfusion.com/ej2/26.2.11/dist/ej2-pdfviewer-lib'
 const pdfViewer = null
 const toolbarSettings = { showTooltip: true, toolbarItems: ['PageNavigationTool', 'MagnificationTool', 'PanTool', 'SelectionTool', 'SearchOption', 'DownloadOption'] }
-const hostUrl = 'https://node-js-fsp.onrender.com/'
+const hostUrl = 'https://node-js-fsp.onrender.com'
 const ajaxSettings = {
   url: hostUrl,
-  uploadUrl: `${hostUrl}Upload`,
+  uploadUrl: `${hostUrl}/Upload`,
 }
 </script>
