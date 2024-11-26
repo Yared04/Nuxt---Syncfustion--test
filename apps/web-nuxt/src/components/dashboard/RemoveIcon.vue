@@ -1,9 +1,9 @@
 <template>
   <button
-    class="absolute top-1 right-2"
+    class="absolute bottom-1 right-6"
     @click="() => $emit('removePanel')"
   >
-    <font-awesome-icon class="text-red-500 w-6 h-6" :icon="['fal', 'circle-minus']" />
+    <font-awesome-icon class="text-red-500 w-5 h-5" :icon="['fal', 'circle-minus']" />
   </button>
 </template>
 
