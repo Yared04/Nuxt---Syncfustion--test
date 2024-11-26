@@ -31,10 +31,12 @@
       ref="dashboard"
       class="mx-auto"
       :allow-dragging="isEditing"
-      :columns="2"
+      :columns="4"
       :cell-spacing="cellSpacing"
       :cell-aspect-ratio="cellAspectRatio"
       :allow-floating="true"
+      :allow-resizing="isEditing"
+      @resize-stop="onResizeStop"
     >
       <e-panels>
         <!-- Loop through panels and set dynamic content based on panel config -->
@@ -46,14 +48,18 @@
           :col="panelsConfig.panel1.col"
           :size-x="panelsConfig.panel1.sizeX"
           :size-y="panelsConfig.panel1.sizeY"
+          max-size-x="4"
+          max-size-y="2"
           header="header1"
           content="content1"
         >
           <template #header1>
             <RemoveIcon v-if="isEditing" @remove-panel="removePanel('panel1')" />
+            <EditIcon v-if="isEditing" @edit-panel="editPanel('panel1')" />
           </template>
           <template #content1>
-            <KPICards />
+            <PanelContentOptions v-if="panelsConfig.panel1.editMode" :size-x="panelsConfig.panel1.sizeX" :size-y="panelsConfig.panel1.sizeY" @selected-content="(item) => assignContent(item, 'panel1')" />
+            <component :is="componentMap[panelsConfig.panel1.content]" v-else />
           </template>
         </e-panel>
 
@@ -66,14 +72,19 @@
           :col="panelsConfig.panel2.col"
           :size-x="panelsConfig.panel2.sizeX"
           :size-y="panelsConfig.panel2.sizeY"
+          max-size-x="4"
+          max-size-y="2"
           header="header2"
           content="content2"
         >
           <template #header2>
             <RemoveIcon v-if="isEditing" @remove-panel="removePanel('panel2')" />
+            <EditIcon v-if="isEditing" @edit-panel="editPanel('panel2')" />
           </template>
           <template #content2>
-            <FavouritesCard />
+            <!-- <FavouritesCard /> -->
+            <PanelContentOptions v-if="panelsConfig.panel2.editMode" :size-x="panelsConfig.panel2.sizeX" :size-y="panelsConfig.panel2.sizeY" @selected-content="(item) => assignContent(item, 'panel2')" />
+            <component :is="componentMap[panelsConfig.panel2.content]" v-else />
           </template>
         </e-panel>
         <e-panel
@@ -84,16 +95,22 @@
           :col="panelsConfig.panel3.col"
           :size-x="panelsConfig.panel3.sizeX"
           :size-y="panelsConfig.panel3.sizeY"
+          max-size-x="4"
+          max-size-y="2"
           header="header3"
           content="content3"
         >
           <template #header3>
             <RemoveIcon v-if="isEditing" @remove-panel="removePanel('panel3')" />
+            <EditIcon v-if="isEditing" @edit-panel="editPanel('panel3')" />
           </template>
           <template #content3>
-            <div>Contet 3</div>
+            <PanelContentOptions v-if="panelsConfig.panel3.editMode" :size-x="panelsConfig.panel3.sizeX" :size-y="panelsConfig.panel3.sizeY" @selected-content="(item) => assignContent(item, 'panel3')" />
+            <component :is="componentMap[panelsConfig.panel3.content]" v-else />
           </template>
         </e-panel>
+
+        <!-- panel 4 -->
         <e-panel
           v-if="panelsConfig.panel4.visible"
           id="panel4"
@@ -102,14 +119,66 @@
           :col="panelsConfig.panel4.col"
           :size-x="panelsConfig.panel4.sizeX"
           :size-y="panelsConfig.panel4.sizeY"
+          max-size-x="4"
+          max-size-y="2"
           header="header4"
           content="content4"
         >
           <template #header4>
             <RemoveIcon v-if="isEditing" @remove-panel="removePanel('panel4')" />
+            <EditIcon v-if="isEditing" @edit-panel="editPanel('panel4')" />
           </template>
           <template #content4>
-            <div>Contet 4</div>
+            <PanelContentOptions v-if="panelsConfig.panel4.editMode" :size-x="panelsConfig.panel4.sizeX" :size-y="panelsConfig.panel4.sizeY" @selected-content="(item) => assignContent(item, 'panel4')" />
+            <component :is="componentMap[panelsConfig.panel4.content]" v-else />
+          </template>
+        </e-panel>
+
+        <!-- panel 5 -->
+        <e-panel
+          v-if="panelsConfig.panel5.visible"
+          id="panel5"
+          :css-class="isEditing ? 'editing-mode' : ''"
+          :row="panelsConfig.panel5.row"
+          :col="panelsConfig.panel5.col"
+          :size-x="panelsConfig.panel5.sizeX"
+          :size-y="panelsConfig.panel5.sizeY"
+          max-size-x="4"
+          max-size-y="2"
+          header="header5"
+          content="content5"
+        >
+          <template #header5>
+            <RemoveIcon v-if="isEditing" @remove-panel="removePanel('panel5')" />
+            <EditIcon v-if="isEditing" @edit-panel="editPanel('panel5')" />
+          </template>
+          <template #content5>
+            <PanelContentOptions v-if="panelsConfig.panel5.editMode" :size-x="panelsConfig.panel5.sizeX" :size-y="panelsConfig.panel5.sizeY" @selected-content="(item) => assignContent(item, 'panel5')" />
+            <component :is="componentMap[panelsConfig.panel5.content]" v-else />
+          </template>
+        </e-panel>
+
+        <!-- panel 6 -->
+        <e-panel
+          v-if="panelsConfig.panel6.visible"
+          id="panel6"
+          :css-class="isEditing ? 'editing-mode' : ''"
+          :row="panelsConfig.panel6.row"
+          :col="panelsConfig.panel6.col"
+          :size-x="panelsConfig.panel6.sizeX"
+          :size-y="panelsConfig.panel6.sizeY"
+          max-size-x="4"
+          max-size-y="2"
+          header="header6"
+          content="content6"
+        >
+          <template #header6>
+            <RemoveIcon v-if="isEditing" @remove-panel="removePanel('panel6')" />
+            <EditIcon v-if="isEditing" @edit-panel="editPanel('panel6')" />
+          </template>
+          <template #content6>
+            <PanelContentOptions v-if="panelsConfig.panel6.editMode" :size-x="panelsConfig.panel6.sizeX" :size-y="panelsConfig.panel6.sizeY" @selected-content="(item) => assignContent(item, 'panel6')" />
+            <component :is="componentMap[panelsConfig.panel6.content]" v-else />
           </template>
         </e-panel>
       </e-panels>
@@ -118,56 +187,110 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
 import KPICards from './KPICards.vue'
 import FavouritesCard from './FavouritesCard.vue'
 import RemoveIcon from './RemoveIcon.vue'
+import PanelContentOptions from './PanelContentOptions.vue'
+import EditIcon from './EditIcon.vue'
+import DocumentLibraryCard from './DocumentLibraryCard.vue'
 
 // Dashboard configurations
 const cellSpacing = [10, 10]
-const cellAspectRatio = 100 / 27
+const cellAspectRatio = 100 / 50
 const isEditing = ref(false)
 const dashboard = ref(null)
 
+const componentMap = {
+  KPICards,
+  FavouritesCard,
+  DocumentLibraryCard,
+}
+
 // Panel configurations
 const panelsConfig = ref({
-  panel1: { row: 0, col: 0, sizeX: 2, sizeY: 1, visible: true },
-  panel2: { row: 1, col: 0, sizeX: 2, sizeY: 1, visible: true },
-  panel3: { row: 2, col: 0, sizeX: 1, sizeY: 1, visible: true },
-  panel4: { row: 2, col: 1, sizeX: 1, sizeY: 1, visible: false },
+  panel1: { row: 0, col: 0, sizeX: 2, sizeY: 1, visible: true, content: 'KPICards', editMode: false },
+  panel2: { row: 1, col: 0, sizeX: 2, sizeY: 1, visible: true, content: 'FavouritesCard', editMode: false },
+  panel3: { row: 3, col: 0, sizeX: 1, sizeY: 1, visible: true, content: 'DocumentLibraryCard', editMode: false },
+  panel4: { row: 2, col: 1, sizeX: 1, sizeY: 1, visible: false, content: 'FavouritesCard', editMode: false },
+  panel5: { row: 2, col: 2, sizeX: 1, sizeY: 1, visible: false, content: 'FavouritesCard', editMode: false },
+  panel6: { row: 2, col: 3, sizeX: 1, sizeY: 1, visible: false, content: 'KPICards', editMode: false },
 })
+
+// Update layout based on user interaction
+function updateLayout(editMode = false) {
+  const updatedPanels = dashboard.value.serialize()
+  updatedPanels.forEach((panel) => {
+    const panelConfig = panelsConfig.value[panel.id]
+    panelConfig.row = panel.row
+    panelConfig.col = panel.col
+    panelConfig.sizeX = panel.sizeX
+    panelConfig.sizeY = panel.sizeY
+    panelConfig.editMode = editMode
+  })
+}
 
 function toggleEditMode() {
   if (isEditing.value) {
-    // Save updated configurations when exiting edit mode
-    const updatedPanels = dashboard.value.serialize() // Assuming serialize() returns panels with IDs
-    updatedPanels.forEach((panel) => {
-      const panelConfig = panelsConfig.value[panel.id]
-      panelConfig.row = panel.row
-      panelConfig.col = panel.col
-      panelConfig.sizeX = panel.sizeX
-      panelConfig.sizeY = panel.sizeY
-    })
+    updateLayout(false)
+    dashboard.value.refresh()
     localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
   }
   isEditing.value = !isEditing.value
 }
 
-// Remove a panel and store its configuration in hiddenPanels
+// Remove a panel from the dashboard by setting visible to false
 function removePanel(panelId) {
+  updateLayout()
   panelsConfig.value[panelId].visible = false
-  const storedPanels = JSON.parse(localStorage.getItem('dashboardPanels')) || { ...panelsConfig.value }
-  storedPanels[panelId].visible = false
-  localStorage.setItem('dashboardPanels', JSON.stringify(storedPanels))
-}
-
-// Add a hidden panel back to the dashboard
-function addHiddenPanel(panelId) {
-  panelsConfig.value[panelId].visible = true
+  dashboard.value.refresh()
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
 }
 
-// Load panels from localStorage on mount
+// Open panel in edit mode
+function editPanel(panelId) {
+  panelsConfig.value[panelId].editMode = !panelsConfig.value[panelId].editMode
+}
+
+// Add a hidden panel back to the dashboard by setting visible to true
+function addHiddenPanel(panelId) {
+  updateLayout()
+  panelsConfig.value[panelId].visible = true
+  localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
+  dashboard.value.refresh()
+}
+
+// Assign content to a panel based on user selection
+function assignContent(selectedItem, panelId) {
+  switch (selectedItem) {
+    case 'KPICards':
+      selectedItem = 'KPICards'
+      break
+    case 'Favourite Documents':
+      selectedItem = 'FavouritesCard'
+      break
+    case 'Document Library':
+      selectedItem = 'DocumentLibraryCard'
+      break
+    default:
+      selectedItem = KPICards
+  }
+  updateLayout()
+  panelsConfig.value[panelId].content = selectedItem
+  panelsConfig.value[panelId].editMode = false
+  localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
+}
+
+function onResizeStop(arg) {
+  updateLayout()
+  const panelId = arg.element.id
+  const sizeX = Number(arg.element.dataset.sizex)
+  const sizeY = Number(arg.element.dataset.sizey)
+  panelsConfig.value[panelId].sizeX = sizeX
+  panelsConfig.value[panelId].sizeY = sizeY
+  dashboard.value.refresh()
+  localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
+}
+
 onMounted(() => {
   const storedPanels = localStorage.getItem('dashboardPanels')
   if (storedPanels)
