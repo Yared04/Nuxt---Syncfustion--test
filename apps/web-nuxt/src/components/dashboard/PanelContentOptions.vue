@@ -1,14 +1,25 @@
 <template>
-  <div class="flex justify-center items-center w-full h-full bg-slate-50 z-[10001]">
-    <div class="flex space-x-4">
-      <div
-        v-for="(item, index) in items"
-        :key="index"
-        class="bg-white p-4 rounded-lg shadow-lg cursor-pointer hover:bg-primaryBlue hover:text-white"
+  <div class="flex flex-wrap gap-4 justify-center items-center p-6 w-full h-full bg-slate-50  overflow-auto">
+    <div
+      v-for="(item, index) in items"
+      :key="index"
+      class="cursor-pointer"
+    >
+      <e-tooltip v-if="disabledItems.includes(item)" :show-tip-pointer="false" :content="tooltipMessage" css-class="customTooltip" position="TopCenter">
+        <Button
+          disabled
+          class="w-fit px-4 bg-white !text-black"
+        >
+          <span class="!text-inherit">{{ item }}</span>
+        </Button>
+      </e-tooltip>
+      <Button
+        v-else
+        class="w-fit px-4 bg-white !text-black hover:!text-white hover:bg-primaryBlue"
         @click="() => selectItem(item)"
       >
-        <span>{{ item }}</span>
-      </div>
+        <span class="!text-inherit hover:text-white">{{ item }}</span>
+      </Button>
     </div>
   </div>
 </template>
@@ -19,22 +30,40 @@ const props = defineProps({
   sizeY: { type: Number, required: true },
 })
 const emit = defineEmits(['selectedContent'])
-
+const tooltipMessage = 'This content is not available for this size'
 function selectItem(item) {
   emit('selectedContent', item)
 }
-
-const items = computed(() => {
+const items = ['KPICards', 'Document Library', 'Favourite Documents']
+const disabledItems = computed(() => {
   const { sizeX, sizeY } = props
-  if (sizeX <= 2 && sizeY < 2)
-    return ['KPICards']
-  else if (sizeX <= 4 && sizeY <= 2)
-    return ['KPICards', 'Document Library', 'Favourite Documents']
+  if (sizeX < 3 && sizeY < 2) {
+    // Stricter condition comes first
+    return ['Favourite Documents', 'Document Library']
+  }
+  if (sizeX < 4 && sizeY < 2)
+    return ['Favourite Documents']
 
   return []
 })
 </script>
 
-  <style scoped>
-  /* Your styles here */
+  <style>
+.e-tooltip-wrap.e-popup {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+}
+
+.e-tooltip-wrap .e-arrow-tip-inner.e-tip-right,
+.e-tooltip-wrap .e-arrow-tip-inner.e-tip-left,
+.e-tooltip-wrap .e-arrow-tip-inner.e-tip-bottom,
+.e-tooltip-wrap .e-arrow-tip-inner.e-tip-top {
+    color: #fff;
+    font-size: 25.9px;
+}
+.e-tooltip-wrap .e-tip-content {
+    color: black;
+    font-size: 10px;
+    line-height: 20px;
+}
   </style>
