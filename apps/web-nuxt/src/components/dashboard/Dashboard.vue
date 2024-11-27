@@ -33,7 +33,6 @@
       :allow-dragging="isEditing"
       :columns="6"
       :cell-spacing="cellSpacing"
-      :cell-aspect-ratio="cellAspectRatio"
       :allow-floating="true"
       :allow-resizing="isEditing"
       @resize-stop="onResizeStop"
@@ -48,8 +47,10 @@
           :col="panelsConfig.panel1.col"
           :size-x="panelsConfig.panel1.sizeX"
           :size-y="panelsConfig.panel1.sizeY"
-          max-size-x="6"
-          max-size-y="2"
+          :max-size-x="contentSize[panelsConfig.panel1.content].maxSizeX"
+          :max-size-y="contentSize[panelsConfig.panel1.content].maxSizeY"
+          :min-size-x="contentSize[panelsConfig.panel1.content].minSizeX"
+          :min-size-y="contentSize[panelsConfig.panel1.content].minSizeY"
           header="header1"
           content="content1"
         >
@@ -72,8 +73,10 @@
           :col="panelsConfig.panel2.col"
           :size-x="panelsConfig.panel2.sizeX"
           :size-y="panelsConfig.panel2.sizeY"
-          max-size-x="6"
-          max-size-y="2"
+          :max-size-x="contentSize[panelsConfig.panel2.content].maxSizeX"
+          :max-size-y="contentSize[panelsConfig.panel2.content].maxSizeY"
+          :min-size-x="contentSize[panelsConfig.panel2.content].minSizeX"
+          :min-size-y="contentSize[panelsConfig.panel2.content].minSizeY"
           header="header2"
           content="content2"
         >
@@ -95,8 +98,10 @@
           :col="panelsConfig.panel3.col"
           :size-x="panelsConfig.panel3.sizeX"
           :size-y="panelsConfig.panel3.sizeY"
-          max-size-x="6"
-          max-size-y="2"
+          :max-size-x="contentSize[panelsConfig.panel3.content].maxSizeX"
+          :max-size-y="contentSize[panelsConfig.panel3.content].maxSizeY"
+          :min-size-x="contentSize[panelsConfig.panel3.content].minSizeX"
+          :min-size-y="contentSize[panelsConfig.panel3.content].minSizeY"
           header="header3"
           content="content3"
         >
@@ -119,8 +124,10 @@
           :col="panelsConfig.panel4.col"
           :size-x="panelsConfig.panel4.sizeX"
           :size-y="panelsConfig.panel4.sizeY"
-          max-size-x="6"
-          max-size-y="2"
+          :max-size-x="contentSize[panelsConfig.panel4.content].maxSizeX"
+          :max-size-y="contentSize[panelsConfig.panel4.content].maxSizeY"
+          :min-size-x="contentSize[panelsConfig.panel4.content].minSizeX"
+          :min-size-y="contentSize[panelsConfig.panel4.content].minSizeY"
           header="header4"
           content="content4"
         >
@@ -143,8 +150,10 @@
           :col="panelsConfig.panel5.col"
           :size-x="panelsConfig.panel5.sizeX"
           :size-y="panelsConfig.panel5.sizeY"
-          max-size-x="6"
-          max-size-y="2"
+          :max-size-x="contentSize[panelsConfig.panel5.content].maxSizeX"
+          :max-size-y="contentSize[panelsConfig.panel5.content].maxSizeY"
+          :min-size-x="contentSize[panelsConfig.panel5.content].minSizeX"
+          :min-size-y="contentSize[panelsConfig.panel5.content].minSizeY"
           header="header5"
           content="content5"
         >
@@ -167,8 +176,10 @@
           :col="panelsConfig.panel6.col"
           :size-x="panelsConfig.panel6.sizeX"
           :size-y="panelsConfig.panel6.sizeY"
-          max-size-x="6"
-          max-size-y="2"
+          :max-size-x="contentSize[panelsConfig.panel6.content].maxSizeX"
+          :max-size-y="contentSize[panelsConfig.panel6.content].maxSizeY"
+          :min-size-x="contentSize[panelsConfig.panel6.content].minSizeX"
+          :min-size-y="contentSize[panelsConfig.panel6.content].minSizeY"
           header="header6"
           content="content6"
         >
@@ -196,24 +207,34 @@ import DocumentLibraryCard from './DocumentLibraryCard.vue'
 
 // Dashboard configurations
 const cellSpacing = [10, 10]
-const cellAspectRatio = 100 / 100
 const isEditing = ref(false)
 const dashboard = ref(null)
 
 const componentMap = {
-  KPICards,
-  FavouritesCard,
-  DocumentLibraryCard,
+  'KPI 1': KPICards,
+  'KPI 2': KPICards,
+  'Favourite 1': FavouritesCard,
+  'Favourite 2': FavouritesCard,
+  'Document Library': DocumentLibraryCard,
+}
+
+// Assign min and max size for panels based on the content
+const contentSize = {
+  'KPI 1': { minSizeX: 1, minSizeY: 1, maxSizeX: 2, maxSizeY: 2 },
+  'KPI 2': { minSizeX: 1, minSizeY: 1, maxSizeX: 2, maxSizeY: 2 },
+  'Favourite 1': { minSizeX: 2, minSizeY: 1, maxSizeX: 4, maxSizeY: 2 },
+  'Favourite 2': { minSizeX: 2, minSizeY: 1, maxSizeX: 4, maxSizeY: 2 },
+  'Document Library': { minSizeX: 3, minSizeY: 1, maxSizeX: 6, maxSizeY: 2 },
 }
 
 // Panel configurations
 const panelsConfig = ref({
-  panel1: { row: 0, col: 0, sizeX: 2, sizeY: 1, visible: true, content: 'KPICards', editMode: false },
-  panel2: { row: 1, col: 0, sizeX: 2, sizeY: 1, visible: true, content: 'FavouritesCard', editMode: false },
-  panel3: { row: 3, col: 0, sizeX: 1, sizeY: 1, visible: true, content: 'DocumentLibraryCard', editMode: false },
-  panel4: { row: 2, col: 1, sizeX: 1, sizeY: 1, visible: false, content: 'FavouritesCard', editMode: false },
-  panel5: { row: 2, col: 2, sizeX: 1, sizeY: 1, visible: false, content: 'FavouritesCard', editMode: false },
-  panel6: { row: 2, col: 3, sizeX: 1, sizeY: 1, visible: false, content: 'KPICards', editMode: false },
+  panel1: { row: 0, col: 0, sizeX: 2, sizeY: 1, visible: true, content: 'KPI 1', editMode: false },
+  panel2: { row: 1, col: 0, sizeX: 2, sizeY: 1, visible: true, content: 'Favourite 1', editMode: false },
+  panel3: { row: 3, col: 0, sizeX: 1, sizeY: 1, visible: true, content: 'Document Library', editMode: false },
+  panel4: { row: 2, col: 1, sizeX: 1, sizeY: 1, visible: false, content: 'Favourite 2', editMode: false },
+  panel5: { row: 2, col: 2, sizeX: 1, sizeY: 1, visible: false, content: 'Favourite 2', editMode: false },
+  panel6: { row: 2, col: 3, sizeX: 1, sizeY: 1, visible: false, content: 'KPI 2', editMode: false },
 })
 
 // Update layout based on user interaction
@@ -259,19 +280,6 @@ function addHiddenPanel(panelId) {
 
 // Assign content to a panel based on user selection
 function assignContent(selectedItem, panelId) {
-  switch (selectedItem) {
-    case 'KPICards':
-      selectedItem = 'KPICards'
-      break
-    case 'Favourite Documents':
-      selectedItem = 'FavouritesCard'
-      break
-    case 'Document Library':
-      selectedItem = 'DocumentLibraryCard'
-      break
-    default:
-      selectedItem = KPICards
-  }
   panelsConfig.value[panelId].content = selectedItem
   panelsConfig.value[panelId].editMode = false
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))

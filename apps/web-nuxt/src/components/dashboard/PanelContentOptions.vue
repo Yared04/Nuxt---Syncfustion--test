@@ -1,25 +1,14 @@
 <template>
-  <div class="flex flex-wrap gap-4 justify-center items-center p-6 w-full h-full bg-slate-50  overflow-auto">
-    <div
-      v-for="(item, index) in items"
-      :key="index"
-      class="cursor-pointer"
-    >
-      <e-tooltip v-if="disabledItems.includes(item)" :show-tip-pointer="false" :content="tooltipMessage" css-class="customTooltip" position="TopCenter">
-        <Button
-          disabled
-          class="w-fit px-4 bg-white !text-black"
-        >
-          <span class="!text-inherit">{{ item }}</span>
-        </Button>
-      </e-tooltip>
-      <Button
-        v-else
-        class="w-fit px-4 bg-white !text-black hover:!text-white hover:bg-primaryBlue"
-        @click="() => selectItem(item)"
-      >
-        <span class="!text-inherit hover:text-white">{{ item }}</span>
-      </Button>
+  <div class="m-auto p-6 max-full h-full bg-slate-50  overflow-auto">
+    <div class="max-w-md flex items-center mx-auto h-full">
+      <ejs-dropdowntree id="dropdowntree" :fields="fields" item-template="iTemplate" placeholder="Select an element to display" @select="onSelect">
+        <template #iTemplate="{ data }">
+          <e-tooltip v-if="disabledItems.includes(data.name)" :show-tip-pointer="false" :content="tooltipMessage" css-class="customTooltip" position="TopCenter">
+            <span class="text-base opacity-30">{{ data.name }}</span>
+          </e-tooltip>
+          <span v-else>{{ data.name }}</span>
+        </template>
+      </ejs-dropdowntree>
     </div>
   </div>
 </template>
@@ -31,21 +20,33 @@ const props = defineProps({
 })
 const emit = defineEmits(['selectedContent'])
 const tooltipMessage = 'This content is not available for this size'
-function selectItem(item) {
-  emit('selectedContent', item)
+
+function onSelect(arg) {
+  emit('selectedContent', arg.itemData.text)
 }
-const items = ['KPICards', 'Document Library', 'Favourite Documents']
+
 const disabledItems = computed(() => {
   const { sizeX, sizeY } = props
-  if (sizeX < 3 && sizeY < 2) {
-    // Stricter condition comes first
-    return ['Favourite Documents', 'Document Library']
-  }
+  if (sizeX < 3 && sizeY < 2)
+    return ['Favourite Documents', 'Favourite 1', 'Favourite 2', 'Document Library']
+
   if (sizeX < 4 && sizeY < 2)
-    return ['Favourite Documents']
+    return ['Favourite Documents', 'Favourite 1', 'Favourite 2']
 
   return []
 })
+
+const data = [
+  { id: 1, name: 'KPIs', hasChild: true, selectable: false },
+  { id: 2, pid: 1, name: 'KPI 1', selectable: !disabledItems.value.includes('KPI 1') },
+  { id: 3, pid: 1, name: 'KPI 2', selectable: !disabledItems.value.includes('KPI 1') },
+  { id: 4, name: 'Favourite Documents', hasChild: true, selectable: false },
+  { id: 6, pid: 4, name: 'Favourite 1', selectable: !disabledItems.value.includes('Favourite Documents') },
+  { id: 7, pid: 4, name: 'Favourite 2', selectable: !disabledItems.value.includes('Favourite Documents') },
+  { id: 8, name: 'Document Library', selectable: !disabledItems.value.includes('Document Library') },
+]
+
+const fields = { dataSource: data, value: 'id', text: 'name', parentValue: 'pid', hasChildren: 'hasChild' }
 </script>
 
   <style>
@@ -63,7 +64,12 @@ const disabledItems = computed(() => {
 }
 .e-tooltip-wrap .e-tip-content {
     color: black;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 20px;
+    padding: 8px;
 }
   </style>
+
+<style scoped>
+
+</style>
