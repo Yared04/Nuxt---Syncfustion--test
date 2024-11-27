@@ -31,7 +31,7 @@
       ref="dashboard"
       class="mx-auto"
       :allow-dragging="isEditing"
-      :columns="4"
+      :columns="6"
       :cell-spacing="cellSpacing"
       :cell-aspect-ratio="cellAspectRatio"
       :allow-floating="true"
@@ -196,7 +196,7 @@ import DocumentLibraryCard from './DocumentLibraryCard.vue'
 
 // Dashboard configurations
 const cellSpacing = [10, 10]
-const cellAspectRatio = 100 / 50
+const cellAspectRatio = 100 / 100
 const isEditing = ref(false)
 const dashboard = ref(null)
 
@@ -217,7 +217,7 @@ const panelsConfig = ref({
 })
 
 // Update layout based on user interaction
-function updateLayout(editMode = false) {
+function updateLayout(editMode) {
   const updatedPanels = dashboard.value.serialize()
   updatedPanels.forEach((panel) => {
     const panelConfig = panelsConfig.value[panel.id]
@@ -225,14 +225,14 @@ function updateLayout(editMode = false) {
     panelConfig.col = panel.col
     panelConfig.sizeX = panel.sizeX
     panelConfig.sizeY = panel.sizeY
-    panelConfig.editMode = editMode
+    if (editMode !== undefined)
+      panelConfig.editMode = editMode
   })
 }
 
 function toggleEditMode() {
   if (isEditing.value) {
     updateLayout(false)
-    dashboard.value.refresh()
     localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
   }
   isEditing.value = !isEditing.value
@@ -242,7 +242,6 @@ function toggleEditMode() {
 function removePanel(panelId) {
   updateLayout()
   panelsConfig.value[panelId].visible = false
-  dashboard.value.refresh()
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
 }
 
@@ -256,7 +255,6 @@ function addHiddenPanel(panelId) {
   updateLayout()
   panelsConfig.value[panelId].visible = true
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
-  dashboard.value.refresh()
 }
 
 // Assign content to a panel based on user selection
@@ -274,7 +272,6 @@ function assignContent(selectedItem, panelId) {
     default:
       selectedItem = KPICards
   }
-  updateLayout()
   panelsConfig.value[panelId].content = selectedItem
   panelsConfig.value[panelId].editMode = false
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
@@ -287,7 +284,6 @@ function onResizeStop(arg) {
   const sizeY = Number(arg.element.dataset.sizey)
   panelsConfig.value[panelId].sizeX = sizeX
   panelsConfig.value[panelId].sizeY = sizeY
-  dashboard.value.refresh()
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
 }
 

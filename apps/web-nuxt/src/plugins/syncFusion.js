@@ -2,7 +2,7 @@ import { registerLicense } from '@syncfusion/ej2-base'
 
 // import { FileManagerPlugin } from '@syncfusion/ej2-vue-filemanager'
 import { DashboardLayoutComponent, PaneDirective, PanelDirective, PanelsDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
-
+import { TooltipComponent } from '@syncfusion/ej2-vue-popups'
 import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
 import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerPlugin, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
 import { defineNuxtPlugin } from '#app'
@@ -18,6 +18,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('EjsDashboardlayout', DashboardLayoutComponent)
   nuxtApp.vueApp.component('EPanel', PanelDirective)
   nuxtApp.vueApp.component('EPanels', PanelsDirective)
+  nuxtApp.vueApp.component('ETooltip', TooltipComponent)
   nuxtApp.vueApp.use(TreeViewPlugin)
   nuxtApp.vueApp.use(PdfViewerPlugin)
   // nuxtApp.vueApp.use(FileManagerPlugin)
