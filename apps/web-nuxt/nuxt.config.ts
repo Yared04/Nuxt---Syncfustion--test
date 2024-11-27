@@ -32,7 +32,6 @@ export default defineNuxtConfig({
     server: {
       cors: { origin: '*' },
     },
-
   },
   devServer: {
     port: 3001,
@@ -88,7 +87,7 @@ export default defineNuxtConfig({
   plugins: [
     '~/plugins/fontawesome.js',
     '~/plugins/vue-recaptcha.js',
-    '~/plugins/syncFusion.js',
+    { src: '~/plugins/syncFusion.js', mode: 'client' },
   ],
   app: {
     layoutTransition: {
@@ -100,7 +99,6 @@ export default defineNuxtConfig({
     '@fortawesome/fontawesome-svg-core/styles.css',
     '~/assets/scss/main.scss',
     '~/assets/scss/tailwind.scss',
-
   ],
   runtimeConfig: {
     public: {

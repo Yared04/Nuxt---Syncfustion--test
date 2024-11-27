@@ -15,6 +15,7 @@
     "@nuxtjs/dotenv": "^1.4.2",
     "@nuxtjs/i18n": "^8.3.1",
     "@syncfusion/ej2-vue-documenteditor": "^27.1.55",
+    "@syncfusion/ej2-vue-filemanager": "^27.1.55",
     "@syncfusion/ej2-vue-inputs": "^27.1.55",
     "@syncfusion/ej2-vue-layouts": "^27.1.56",
     "@syncfusion/ej2-vue-navigations": "^27.2.2",
@@ -39,7 +40,6 @@
     "primeicons": "^6.0.1",
     "primevue": "^3.49.0",
     "tippy.js": "^6.3.7",
-    "vue-cropperjs": "^5.0.0",
     "vue-uuid": "^3.0.0",
     "vue3-recaptcha-v2": "^2.0.2",
     "vuedraggable": "^2.24.3"
