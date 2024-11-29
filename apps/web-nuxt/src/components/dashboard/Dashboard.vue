@@ -336,6 +336,7 @@ function addHiddenPanel(category) {
   }
   const [panelId, _panel] = hiddenPanel
   panelsConfig.value[panelId].visible = true
+  panelsConfig.value[panelId].editMode = true
   closeAddCardDialog()
   localStorage.setItem('dashboardPanels', JSON.stringify(panelsConfig.value))
 }
