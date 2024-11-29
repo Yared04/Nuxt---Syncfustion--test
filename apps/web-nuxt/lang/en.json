@@ -403,7 +403,8 @@
     "data_sources": "Data sources",
     "lists": "Lists",
     "databases": "Databases",
-    "integrations": "Integrations"
+    "integrations": "Integrations",
+    "assets_library": "Assets library"
   }
 
 }

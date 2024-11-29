@@ -1,9 +1,9 @@
 <template class="relative doc-lib">
   <ejs-splitter id="default-splitter" class="mx-12 my-10" height="600px">
     <e-panes>
-      <e-pane content="#leftPaneContent" size="25%" min="15%" />
-      <e-pane v-if="showMiddlePane" size="50%" min="15%" content="#middlePaneContent" />
-      <e-pane v-if="showRightPane" size="25%" min="15%" content="#rightPaneContent" />
+      <e-pane content="#leftPaneContent" size="25%" min="20%" />
+      <e-pane v-if="showMiddlePane" size="50%" min="25%" content="#middlePaneContent" />
+      <e-pane v-if="showRightPane" size="25%" min="20%" content="#rightPaneContent" />
     </e-panes>
   </ejs-splitter>
   <div class="absolute mt-40 -right-5 flex flex-col space-y-20">

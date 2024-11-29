@@ -399,7 +399,9 @@
     "data_sources": "Sources de données",
     "lists": "Listes",
     "databases": "Bases de données",
-    "integrations": "Intégrations"
+    "integrations": "Intégrations",
+    "assets_library": "Bibliothèque d'actifs"
+
   },
   "docs_created": "Documents créés",
   "created_on": "Créé le",
