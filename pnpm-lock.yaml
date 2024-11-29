@@ -9683,6 +9683,7 @@ snapshots:
       '@syncfusion/ej2-lists': 27.2.2
       '@syncfusion/ej2-popups': 27.2.2
 
+
   '@syncfusion/ej2-navigations@27.2.3':
     dependencies:
       '@syncfusion/ej2-base': 27.2.2
@@ -9805,6 +9806,7 @@ snapshots:
       '@syncfusion/ej2-base': 27.2.2
       '@syncfusion/ej2-dropdowns': 27.2.4
       '@syncfusion/ej2-vue-base': 27.2.2
+
 
   '@syncfusion/ej2-vue-filemanager@27.2.3':
     dependencies:

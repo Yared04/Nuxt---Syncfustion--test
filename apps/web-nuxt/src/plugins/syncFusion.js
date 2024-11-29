@@ -2,9 +2,9 @@ import { registerLicense } from '@syncfusion/ej2-base'
 
 // import { FileManagerPlugin } from '@syncfusion/ej2-vue-filemanager'
 import { DashboardLayoutComponent, PaneDirective, PanelDirective, PanelsDirective, PanesDirective, SplitterComponent } from '@syncfusion/ej2-vue-layouts'
-import { TooltipComponent } from '@syncfusion/ej2-vue-popups'
+import { DialogComponent, TooltipComponent } from '@syncfusion/ej2-vue-popups'
 import { DropDownTreeComponent } from '@syncfusion/ej2-vue-dropdowns'
-import { TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
+import { CarouselComponent, CarouselItemDirective, CarouselItemsDirective, TreeViewPlugin } from '@syncfusion/ej2-vue-navigations'
 import { Annotation, BookmarkView, FormDesigner, FormFields, LinkAnnotation, Magnification, Navigation, PdfViewer, PdfViewerPlugin, Print, TextSearch, TextSelection, ThumbnailView, Toolbar } from '@syncfusion/ej2-vue-pdfviewer'
 import { defineNuxtPlugin } from '#app'
 
@@ -20,7 +20,11 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('EPanel', PanelDirective)
   nuxtApp.vueApp.component('EPanels', PanelsDirective)
   nuxtApp.vueApp.component('ETooltip', TooltipComponent)
+  nuxtApp.vueApp.component('EjsDialog', DialogComponent)
   nuxtApp.vueApp.component('EjsDropdowntree', DropDownTreeComponent)
+  nuxtApp.vueApp.component('EjsCarousel', CarouselComponent)
+  nuxtApp.vueApp.component('ECarouselitem', CarouselItemDirective)
+  nuxtApp.vueApp.component('ECarouselitems', CarouselItemsDirective)
   nuxtApp.vueApp.use(TreeViewPlugin)
   nuxtApp.vueApp.use(PdfViewerPlugin)
   // nuxtApp.vueApp.use(FileManagerPlugin)
